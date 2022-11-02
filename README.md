@@ -5,7 +5,7 @@ Es un juego compuesto por:
 * 1 tablero 9 x 9
 * 20 vallas
 ## Objetivo
-El objetvio es llegar a la linea donde inicio el adversario.
+El objetivo es llegar a la linea donde inicio el adversario.
 ## Jugabilidad
 El jugador iniciara con una opcion cada turno:
 * Moverse en sentido cardinal, ya sea izquierda o derecha, arriba o abajo
