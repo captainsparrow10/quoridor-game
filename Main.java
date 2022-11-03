@@ -103,7 +103,6 @@ class Main {
         // Opción 2: Mover vallas ( Falta clase de Vallas (Federico) )
       }
 
-      
     }
 
     sc.close();
