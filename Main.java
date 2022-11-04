@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import tablero.Tablero;
 import java.util.Scanner;
 import movement.Pawn;
@@ -231,6 +232,12 @@ class Main {
     }
 
     sc.close();
+=======
+
+class Main {
+  public static void main(String[] args) {
+>>>>>>> 8f71fe7f1613ac2f93d270cac286e898bc20c868
 
   }
+
 }
