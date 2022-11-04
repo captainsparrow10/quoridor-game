@@ -1,11 +1,10 @@
-<<<<<<< HEAD
 import tablero.Tablero;
 import java.util.Scanner;
 import movement.Pawn;
 import movement.Wall;
 import java.util.ArrayList;
 
-class Main {
+public class Main {
   public static void main(String[] args) {
     // Aqui se relaizarán toda las llamadas que se van a realizar
     String name;
@@ -232,11 +231,7 @@ class Main {
     }
 
     sc.close();
-=======
 
-class Main {
-  public static void main(String[] args) {
->>>>>>> 8f71fe7f1613ac2f93d270cac286e898bc20c868
 
   }
 
