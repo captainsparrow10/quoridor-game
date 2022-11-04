@@ -4,24 +4,41 @@ import java.util.Arrays;
 
 public class Tablero {
 
-  static String[][] tablero = new String[17][17];
+  public String[][] tablero = new String[17][17];
 
-  static public void llenartablero() {
+  public void llenartablero() {
     for (int i = 0; i < tablero.length; i++) {
       for (int j = 0; j < tablero.length; j++) {
-          tablero[i][j] = " ";
+
+        if(i != 0 && i%2 != 0) {
+          tablero[i][j] = "x";
+        }else {
+          if(j != 0 && j%2 != 0){
+            tablero[i][j] = "x";
+          }else {
+            tablero[i][j] = " ";
+          }
+          
+        }
+       
       }
     }
   }
 
-  static public void agregarPosicionPeon(int posicionX, int posicionY) {
+  public void agregarPosicionPeon(int posicionX, int posicionY) {
     tablero[posicionX][posicionY] = "p";
     System.out.println(Arrays.deepToString(tablero).replace("], ", "]\n").replace("[[", "[").replace("]]", "]"));
   }
 
-  static public void agregarPosicionValla(int posicion1X, int posicion1Y, int posicion2X, int posicion2Y) {
-    tablero[posicion1X][posicion1Y] = "valla";
-    tablero[posicion2X][posicion2Y] = "valla";
+  public void agregarPosicionValla(int posicion1X, int posicion1Y, int posicion2X, int posicion2Y) {
+    tablero[posicion1X][posicion1Y] = "v";
+    tablero[posicion2X][posicion2Y] = "v";
     System.out.println(Arrays.deepToString(tablero));
   }
+
+  public void mostrarTablero(){
+    System.out.println(Arrays.deepToString(tablero).replace("], ", "]\n").replace("[[", "[").replace("]]", "]"));
+  }
+
+
 }

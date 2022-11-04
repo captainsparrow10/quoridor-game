@@ -3,7 +3,7 @@ package movement;
 public class Pawn {
     String name;
     String id;
-    int walls = 10;
+    public int walls = 10;
     int[] position = new int[2];
 
     //Constructor para colocarle un nombre a el peón (Jugador) al declarar el objeto.
@@ -13,19 +13,19 @@ public class Pawn {
     }
 
     //Funciones para actualizar la posición del peón
-    public void moveUp(){
+    public void moveRight(){
         this.position[1] += 2;
     }
 
-    public void moveDown(){
+    public void moveLeft(){
         this.position[1] -= 2;
     }
 
-    public void moveLeft(){
+    public void moveUp(){
         this.position[0] -= 2;
     }
 
-    public void moveRight(){
+    public void moveDown(){
         this.position[0] += 2;
     }
 
@@ -55,6 +55,10 @@ public class Pawn {
 
     public String getId(){
         return this.id;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
 }
