@@ -9,6 +9,7 @@ public class Tablero {
   public void llenartablero() {
    
     for (int i = 0; i < tablero.length; i++) {
+       System.out.print(i+" "); //coordenadas y
       for (int j = 0; j < tablero.length; j++) {
 
         if(i != 0 && i%2 != 0) {
