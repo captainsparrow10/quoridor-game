@@ -7,10 +7,8 @@ public class Tablero {
   public String[][] tablero = new String[17][17];
 
   public void llenartablero() {
-   
     for (int i = 0; i < tablero.length; i++) {
       for (int j = 0; j < tablero.length; j++) {
-
         if(i != 0 && i%2 != 0) {
           tablero[i][j] = "x";
         }else {
