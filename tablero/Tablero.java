@@ -1,7 +1,7 @@
 package tablero;
 import java.util.Arrays;
 
-public class Tablero2 {
+public class Tablero {
 
   public String[][] tablero = new String[17][17];
 
