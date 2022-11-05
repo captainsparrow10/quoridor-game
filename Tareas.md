@@ -82,6 +82,14 @@ Quiero que el peon tome la posicion inical en el centro del tablero, se la puede
 ## Enrique Chino
 ### Tablero
 Debes rellenar el tablero con X donde van las Vallas y hacer que el peon tenga una posicion inical en el centro en ambos lado 
+#### Actualizacion #1
+Se crearon dos arraylists de dos dimensiones, en donde uno guardaba las coordenadas (X,Y) de los movimientos del peon A y el otro los del peon B
+[Act1.1](imagenes/img-readme/historialMovimiento1.png)
+Creacion de arrayLists
+[Act1.2](imagenes/img-readme/historialMovimiento2.png)
+Condicion para saber cual peon esta haciendo el movimiento y guardando las coordenadas x y
+[Act1.3](imagenes/img-readme/historialMovimiento3.png)
+Juntando las coordenadas x y en un arraylists de 2 dimensiones con su respectivo peon
 ## Enrique Negro
 ### Crer un menu
 Crea el menu del juego solamente 

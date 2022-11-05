@@ -6,10 +6,16 @@ import java.util.ArrayList;
 
 public class Main {
   public static void main(String[] args) {
-    // Aqui se relaizarán toda las llamadas que se van a realizar
+    // Aqui se relaizarï¿½n toda las llamadas que se van a realizar
     String name;
     int optionMain, optionSecond, optionThird, positionX, positionY, playerActual;
     ArrayList<Pawn> listaPlayers = new ArrayList<Pawn>();
+    ArrayList<Integer> peonAPosicionX = new ArrayList();
+    ArrayList<Integer> peonAPosicionY = new ArrayList();
+    ArrayList<Integer> peonBPosicionX = new ArrayList();
+    ArrayList<Integer> peonBPosicionY = new ArrayList();
+    ArrayList<ArrayList<Integer>> peonAHistoria = new ArrayList<>();
+    ArrayList<ArrayList<Integer>> peonBHistoria = new ArrayList<>();
     Boolean end = false, endOption = false, responseWalls = false;
     Wall walls = new Wall();
     Tablero table = new Tablero();
@@ -62,18 +68,18 @@ public class Main {
 
       endOption= false;
       while (!endOption) {
-        System.out.println("Opción 1: Moverse.\nOpción 2: Colocar muro.");
+        System.out.println("Opciï¿½n 1: Moverse.\nOpciï¿½n 2: Colocar muro.");
 
         optionMain = sc.nextInt();
 
         if (optionMain != 1 && optionMain != 2) {
-          System.out.println("Opción no válida");
+          System.out.println("Opciï¿½n no vï¿½lida");
           continue;
         }
 
         if (optionMain == 1) {
           System.out.println(
-              "¿Hacia qué direccíón desea moverse?\nOpción 1: Hacia arriba.\nOpción 2: Hacia abajo.\nOpción 3: Hacia la derecha.\nOpción 4: Hacia la izquierda.");
+              "ï¿½Hacia quï¿½ direccï¿½ï¿½n desea moverse?\nOpciï¿½n 1: Hacia arriba.\nOpciï¿½n 2: Hacia abajo.\nOpciï¿½n 3: Hacia la derecha.\nOpciï¿½n 4: Hacia la izquierda.");
 
           optionSecond = sc.nextInt();
 
@@ -84,31 +90,48 @@ public class Main {
               // Comprobamos que no haya una vaya.
               if (table.tablero[listaPlayers.get(playerActual).getPosition()[0] - 1][listaPlayers.get(playerActual)
                   .getPosition()[1]] == "v") {
-                System.out.println("Hay una valla aquí, prueba en otro lugar.");
+                System.out.println("Hay una valla aquï¿½, prueba en otro lugar.");
                 continue;
               }
               table.tablero[listaPlayers.get(playerActual).getPosition()[0]][listaPlayers.get(playerActual).getPosition()[1]] = " ";
 
-              // Actualizamos la nueva posición del jugador.
+              // Actualizamos la nueva posiciï¿½n del jugador.
               listaPlayers.get(playerActual).moveUp();
-
-              // Actualizamos la posición del peón en la tabla
+              //AÃ±adimos el movimiento al historial
+              if(playerActual==0){
+                peonAPosicionX.add(listaPlayers.get(playerActual).getPosition()[0]);
+                peonAPosicionY.add(listaPlayers.get(playerActual).getPosition()[1]);
+              }
+              else{
+                peonBPosicionX.add(listaPlayers.get(playerActual).getPosition()[0]);
+                peonBPosicionY.add(listaPlayers.get(playerActual).getPosition()[1]);
+              }
+              // Actualizamos la posiciï¿½n del peï¿½n en la tabla
               table.agregarPosicionPeon(listaPlayers.get(playerActual).getPosition()[0],
                   listaPlayers.get(playerActual).getPosition()[1]);
 
                 endOption = true;
+              
               break;
 
             case 2:
 
               if (table.tablero[listaPlayers.get(playerActual).getPosition()[0] + 1][listaPlayers.get(playerActual)
                   .getPosition()[1]] == "v") {
-                System.out.println("Hay una valla aquí, prueba en otro lugar.");
+                System.out.println("Hay una valla aquï¿½, prueba en otro lugar.");
                 continue;
               }
               table.tablero[listaPlayers.get(playerActual).getPosition()[0]][listaPlayers.get(playerActual).getPosition()[1]] = " ";
 
               listaPlayers.get(playerActual).moveDown();
+              if(playerActual==0){
+                peonAPosicionX.add(listaPlayers.get(playerActual).getPosition()[0]);
+                peonAPosicionY.add(listaPlayers.get(playerActual).getPosition()[1]);
+              }
+              else{
+                peonBPosicionX.add(listaPlayers.get(playerActual).getPosition()[0]);
+                peonBPosicionY.add(listaPlayers.get(playerActual).getPosition()[1]);
+              }
               table.agregarPosicionPeon(listaPlayers.get(playerActual).getPosition()[0],
                   listaPlayers.get(playerActual).getPosition()[1]);
 
@@ -118,12 +141,20 @@ public class Main {
             case 3:
               if (table.tablero[listaPlayers.get(playerActual).getPosition()[0]][listaPlayers.get(playerActual)
                   .getPosition()[1] + 1] == "v") {
-                System.out.println("Hay una valla aquí, prueba en otro lugar.");
+                System.out.println("Hay una valla aquï¿½, prueba en otro lugar.");
                 continue;
               }
               table.tablero[listaPlayers.get(playerActual).getPosition()[0]][listaPlayers.get(playerActual).getPosition()[1]] = " ";
 
               listaPlayers.get(playerActual).moveRight();
+              if(playerActual==0){
+                peonAPosicionX.add(listaPlayers.get(playerActual).getPosition()[0]);
+                peonAPosicionY.add(listaPlayers.get(playerActual).getPosition()[1]);
+              }
+              else{
+                peonBPosicionX.add(listaPlayers.get(playerActual).getPosition()[0]);
+                peonBPosicionY.add(listaPlayers.get(playerActual).getPosition()[1]);
+              }
               table.agregarPosicionPeon(listaPlayers.get(playerActual).getPosition()[0],
                   listaPlayers.get(playerActual).getPosition()[1]);
 
@@ -133,44 +164,52 @@ public class Main {
             case 4:
               if (table.tablero[listaPlayers.get(playerActual).getPosition()[0]][listaPlayers.get(playerActual)
                   .getPosition()[1] - 1] == "v") {
-                System.out.println("Hay una valla aquí, prueba en otro lugar.");
+                System.out.println("Hay una valla aquï¿½, prueba en otro lugar.");
                 continue;
               }
 
               table.tablero[listaPlayers.get(playerActual).getPosition()[0]][listaPlayers.get(playerActual).getPosition()[1]] = " ";
               listaPlayers.get(playerActual).moveLeft();
+              if(playerActual==0){
+                peonAPosicionX.add(listaPlayers.get(playerActual).getPosition()[0]);
+                peonAPosicionY.add(listaPlayers.get(playerActual).getPosition()[1]);
+              }
+              else{
+                peonBPosicionX.add(listaPlayers.get(playerActual).getPosition()[0]);
+                peonBPosicionY.add(listaPlayers.get(playerActual).getPosition()[1]);
+              }
               table.agregarPosicionPeon(listaPlayers.get(playerActual).getPosition()[0],
                   listaPlayers.get(playerActual).getPosition()[1]);
                 endOption = true;
               break;
 
               default:
-                System.out.println("Opción inválida");
+                System.out.println("Opciï¿½n invï¿½lida");
           }
 
         } else {
-          System.out.println("Opción 1: Muro horizontal.\nOpción 2: Muro vertical.");
+          System.out.println("Opciï¿½n 1: Muro horizontal.\nOpciï¿½n 2: Muro vertical.");
 
           optionSecond = sc.nextInt();
 
           if (optionSecond != 1 && optionSecond != 2) {
-            System.out.println("Opción no válida");
+            System.out.println("Opciï¿½n no vï¿½lida");
             continue;
           }
 
           if (optionSecond == 1) {
-            System.out.println("Eliga el número de 'fila' donde desea colocar el muro");
+            System.out.println("Eliga el nï¿½mero de 'fila' donde desea colocar el muro");
             positionX = sc.nextInt();
 
-            System.out.println("Eliga el número de 'columna' donde desea colocar el muro");
+            System.out.println("Eliga el nï¿½mero de 'columna' donde desea colocar el muro");
             positionY = sc.nextInt();
 
-            System.out.println("¿Hacia qué lado desea extender el muro?\nOpción 1: Izquierda.\nOpción 2: Derecha.");
+            System.out.println("ï¿½Hacia quï¿½ lado desea extender el muro?\nOpciï¿½n 1: Izquierda.\nOpciï¿½n 2: Derecha.");
 
             optionThird = sc.nextInt();
 
             if (optionSecond != 1 && optionSecond != 2) {
-              System.out.println("Opción no válida");
+              System.out.println("Opciï¿½n no vï¿½lida");
               continue;
             }
 
@@ -191,18 +230,18 @@ public class Main {
             }
 
           } else {
-            System.out.println("Eliga el número de 'fila' donde desea colocar el muro");
+            System.out.println("Eliga el nï¿½mero de 'fila' donde desea colocar el muro");
             positionX = sc.nextInt();
 
-            System.out.println("Eliga el número de 'columna' donde desea colocar el muro");
+            System.out.println("Eliga el nï¿½mero de 'columna' donde desea colocar el muro");
             positionY = sc.nextInt();
 
-            System.out.println("¿Hacia qué lado desea extender el muro?\nOpción 1: Arriba.\nOpción 2: Abajo.");
+            System.out.println("ï¿½Hacia quï¿½ lado desea extender el muro?\nOpciï¿½n 1: Arriba.\nOpciï¿½n 2: Abajo.");
 
             optionThird = sc.nextInt();
 
             if (optionSecond != 1 && optionSecond != 2) {
-              System.out.println("Opción no válida");
+              System.out.println("Opciï¿½n no vï¿½lida");
               continue;
             }
 
@@ -229,6 +268,10 @@ public class Main {
       }
 
     }
+    peonAHistoria.add(peonAPosicionX);
+    peonAHistoria.add(peonAPosicionY);
+    peonBHistoria.add(peonBPosicionX);
+    peonBHistoria.add(peonBPosicionY);
 
     sc.close();
 
