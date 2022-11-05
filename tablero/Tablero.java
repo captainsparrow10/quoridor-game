@@ -7,9 +7,7 @@ public class Tablero {
   public String[][] tablero = new String[17][17];
 
   public void llenartablero() {
-    System.out.println(0+" "+1+" "+2+" "+3+" "+5+" "+6+" "+7+" "+8+" "+9);//coordenadas x
     for (int i = 0; i < tablero.length; i++) {
-       System.out.print(i+" "); //coordenadas y
       for (int j = 0; j < tablero.length; j++) {
 
         if(i != 0 && i%2 != 0) {
