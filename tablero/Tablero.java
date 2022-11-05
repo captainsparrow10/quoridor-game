@@ -1,13 +1,15 @@
 package tablero;
-
 import java.util.Arrays;
 
-public class Tablero {
+public class Tablero2 {
 
   public String[][] tablero = new String[17][17];
 
+
   public void llenartablero() {
-    for (int i = 0; i < tablero.length; i++) {
+    // Coordenadas en Y
+    System.out.println("   "+1+"     "+2+"     "+3+"     "+4+"     "+5+"     "+6+"     "+7+"     "+8+"     "+9);
+    for (int i = 0; i < tablero.length; i++) {  
       for (int j = 0; j < tablero.length; j++) {
         if(i != 0 && i%2 != 0) {
           tablero[i][j] = "x";
@@ -19,10 +21,9 @@ public class Tablero {
           }
           
         }
-       
       }
     }
-  }
+    }
 
   //Función para agregar actualizar la posición del peón en el tablero.
 
@@ -43,9 +44,21 @@ public class Tablero {
   //Función para mostrar el tablero en pantalla.
 
   public void mostrarTablero(){
-    System.out.println(Arrays.deepToString(tablero).replace("], ", "]\n").replace("[[", "[").replace("]]", "]"));
-
+    int counter =1;
+    for(int i=0;i<tablero.length; i++){
+        if(i%2==0){
+            //Coordenadas en X
+            System.out.print(counter+ " ");
+            counter++;
+        }else{
+            System.out.print("  ");
+        }
+        for(int j=0;j<tablero.length; j++){
+        System.out.print("["+tablero[i][j]+"]");
+    } 
+    System.out.println("\t");
   }
 
 
+}
 }
