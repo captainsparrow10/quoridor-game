@@ -1,6 +1,4 @@
 package tablero;
-import java.util.Arrays;
-
 public class Tablero {
 
   public String[][] tablero = new String[17][17];
@@ -8,7 +6,7 @@ public class Tablero {
 
   public void llenartablero() {
     // Coordenadas en Y
-    System.out.println("   "+1+"     "+2+"     "+3+"     "+4+"     "+5+"     "+6+"     "+7+"     "+8+"     "+9);
+    
     for (int i = 0; i < tablero.length; i++) {  
       for (int j = 0; j < tablero.length; j++) {
         if(i != 0 && i%2 != 0) {
@@ -45,6 +43,7 @@ public class Tablero {
 
   public void mostrarTablero(){
     int counter =1;
+    System.out.println("   "+1+"     "+2+"     "+3+"     "+4+"     "+5+"     "+6+"     "+7+"     "+8+"     "+9);
     for(int i=0;i<tablero.length; i++){
         if(i%2==0){
             //Coordenadas en X
