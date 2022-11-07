@@ -1,4 +1,4 @@
-package movement;
+package consola.movement;
     //Clase peones
 public class Pawn {
     String name;

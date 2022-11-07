@@ -1,4 +1,4 @@
-package tablero;
+package consola.tablero;
 public class Tablero {
 
   public String[][] tablero = new String[17][17];
