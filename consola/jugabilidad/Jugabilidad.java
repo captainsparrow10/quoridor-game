@@ -22,6 +22,7 @@ public class Jugabilidad {
             int prueba, y = 0, x = 0;
             //Movimientos del peon jugador
             do{
+                
                 for(int[]vista : mesaJugabilidadTest){
                     System.out.println(Arrays.toString(vista));
                 }

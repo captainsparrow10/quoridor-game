@@ -194,8 +194,9 @@ public class Main {
             if (optionThird == 1) {
 
               // Guardamos la respuesta (true o false) para ver si es posible colocar una valla ah�.
-              responseWalls = walls.colocarVallaHorizontal(positionX, positionY, positionY - 2, table.tablero,
+              responseWalls = walls.colocarVallaHorizontal(positionX, positionY, positionY - 1, table.tablero,
                   listaPlayers.get(playerActual).walls);
+                  table.mostrarTablero();
 
                 // En caso de que no se pueda colocar un vaya, repetimos el turno.
               if (!responseWalls) {
@@ -203,8 +204,9 @@ public class Main {
               }
               endOption = true;
             } else {
-              responseWalls = walls.colocarVallaHorizontal(positionX, positionY, positionY + 2, table.tablero,
+              responseWalls = walls.colocarVallaHorizontal(positionX, positionY, positionY + 1, table.tablero,
                   listaPlayers.get(playerActual).walls);
+                  table.mostrarTablero();
               if (!responseWalls) {
                 continue;
               }
@@ -233,15 +235,17 @@ public class Main {
             }
 
             if (optionThird == 1) {
-              responseWalls = walls.colocarVallaVertical(positionY, positionX, positionX - 2, table.tablero,
+              responseWalls = walls.colocarVallaVertical(positionY, positionX, positionX - 1, table.tablero,
                   listaPlayers.get(playerActual).walls);
+                  table.mostrarTablero();
               if (!responseWalls) {
                 continue;
               }
               endOption = true;
             } else {
-              responseWalls = walls.colocarVallaVertical(positionY, positionX, positionX + 2, table.tablero,
+              responseWalls = walls.colocarVallaVertical(positionY, positionX, positionX + 1, table.tablero,
                   listaPlayers.get(playerActual).walls);
+                  table.mostrarTablero();
               if (!responseWalls) {
                 continue;
               }
