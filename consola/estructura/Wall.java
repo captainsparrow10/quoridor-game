@@ -1,4 +1,4 @@
-package consola.movement;
+package consola.estructura;
 
 
 //Clase walls
