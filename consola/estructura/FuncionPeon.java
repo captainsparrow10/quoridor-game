@@ -1,14 +1,17 @@
 package consola.estructura;
-
+import java.util.Scanner;
 import consola.tablero.Tablero;
 
 public class FuncionPeon {
-  Tablero table = new Tablero();
+  Scanner sc = new Scanner(System.in);
+  int option;
 
-  void movilidadPeon(int option, Pawn player) {
+  public Boolean movilidadPeon(Pawn player, Tablero table) {
 
     System.out.println(
         "�Hacia qu� direcci�n desea moverse?\nOpci�n 1: Hacia arriba.\nOpci�n 2: Hacia abajo.\nOpci�n 3: Hacia la derecha.\nOpci�n 4: Hacia la izquierda.\nOpci�n 5: Volver.");
+
+        option = sc.nextInt();
 
     switch (option) {
       case 1:
@@ -16,6 +19,7 @@ public class FuncionPeon {
         if (table.tablero[player.getPosition()[1] - 1][player
             .getPosition()[1]] == "v") {
           System.out.println("Hay una valla aqu�, prueba en otro lugar.");
+          return false;
         }
 
         // Eliminamos la posici�n del pe�n actual en el tablero.
@@ -28,15 +32,15 @@ public class FuncionPeon {
         // Actualizamos la nueva posici�n del pe�n en la tabla.
         table.agregarPosicionPeon(player.getPosition()[0],
             player.getPosition()[1], player.getId());
+        return true;
 
-        break;
 
       case 2:
 
         if (table.tablero[player.getPosition()[0] + 1][player
             .getPosition()[1]] == "v") {
           System.out.println("Hay una valla aqu�, prueba en otro lugar.");
-
+          return false;
         }
 
         table.tablero[player.getPosition()[0]][player
@@ -45,13 +49,13 @@ public class FuncionPeon {
         table.agregarPosicionPeon(player.getPosition()[0],
             player.getPosition()[1], player.getId());
 
-        break;
+          return true;
 
       case 3:
         if (table.tablero[player.getPosition()[0]][player
             .getPosition()[1] + 1] == "v") {
           System.out.println("Hay una valla aqu�, prueba en otro lugar.");
-
+          return false;
         }
 
         table.tablero[player.getPosition()[0]][player
@@ -60,13 +64,13 @@ public class FuncionPeon {
         table.agregarPosicionPeon(player.getPosition()[0],
             player.getPosition()[1], player.getId());
 
-        break;
+        return true;
 
       case 4:
         if (table.tablero[player.getPosition()[0]][player
             .getPosition()[1] - 1] == "v") {
           System.out.println("Hay una valla aqu�, prueba en otro lugar.");
-
+          return false;
         }
 
         table.tablero[player.getPosition()[0]][player
@@ -75,13 +79,15 @@ public class FuncionPeon {
         table.agregarPosicionPeon(player.getPosition()[0],
             player.getPosition()[1], player.getId());
 
-        break;
+        return true;
 
       case 5:
         System.out.println("Regresando...");
-
+        return false;
+        
       default:
         System.out.println("Opci�n inv�lida");
+        return false;
     }
 
   }

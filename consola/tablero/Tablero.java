@@ -10,7 +10,13 @@ public class Tablero {
     for (int i = 0; i < tablero.length; i++) {  
       for (int j = 0; j < tablero.length; j++) {
         if(i != 0 && i%2 != 0) {
-          tablero[i][j] = "x";
+         
+
+          if(j%2 == 0){
+            tablero[i][j] = "x";
+          } else {
+            tablero[i][j] = "c";
+          }
         }else {
           if(j != 0 && j%2 != 0){
             tablero[i][j] = "x";
