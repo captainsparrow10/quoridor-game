@@ -9,86 +9,93 @@ public class Funciones {
     
     public Boolean movilidadPeon(Pawn player, Tablero table) {
         int option;
+        try{
 
-        System.out.println(
-            "�Hacia qu� direcci�n desea moverse?\nOpci�n 1: Hacia arriba.\nOpci�n 2: Hacia abajo.\nOpci�n 3: Hacia la derecha.\nOpci�n 4: Hacia la izquierda.\nOpci�n 5: Volver.");
-    
-            option = sc.nextInt();
-    
-        switch (option) {
-          case 1:
-    
-            if (table.tablero[player.getPosition()[1] - 1][player
-                .getPosition()[1]] == "v") {
-              System.out.println("Hay una valla aqu�, prueba en otro lugar.");
-              return false;
+        
+            System.out.println(
+                "�Hacia qu� direcci�n desea moverse?\nOpci�n 1: Hacia arriba.\nOpci�n 2: Hacia abajo.\nOpci�n 3: Hacia la derecha.\nOpci�n 4: Hacia la izquierda.\nOpci�n 5: Volver.");
+        
+                option = Integer.parseInt(sc.nextLine());
+        
+            switch (option) {
+            case 1:
+        
+                if (table.tablero[player.getPosition()[1] - 1][player
+                    .getPosition()[1]] == "v") {
+                System.out.println("Hay una valla aqu�, prueba en otro lugar.");
+                return false;
+                }
+        
+                // Eliminamos la posici�n del pe�n actual en el tablero.
+                table.tablero[player.getPosition()[0]][player
+                    .getPosition()[1]] = " ";
+        
+                // Actualizamos la nueva posici�n del jugador.
+                player.moveUp();
+        
+                // Actualizamos la nueva posici�n del pe�n en la tabla.
+                table.agregarPosicionPeon(player.getPosition()[0],
+                    player.getPosition()[1], player.getId());
+                return true;
+        
+        
+            case 2:
+        
+                if (table.tablero[player.getPosition()[0] + 1][player
+                    .getPosition()[1]] == "v") {
+                System.out.println("Hay una valla aqu�, prueba en otro lugar.");
+                return false;
+                }
+        
+                table.tablero[player.getPosition()[0]][player
+                    .getPosition()[1]] = " ";
+                player.moveDown();
+                table.agregarPosicionPeon(player.getPosition()[0],
+                    player.getPosition()[1], player.getId());
+        
+                return true;
+        
+            case 3:
+                if (table.tablero[player.getPosition()[0]][player
+                    .getPosition()[1] + 1] == "v") {
+                System.out.println("Hay una valla aqu�, prueba en otro lugar.");
+                return false;
+                }
+        
+                table.tablero[player.getPosition()[0]][player
+                    .getPosition()[1]] = " ";
+                player.moveRight();
+                table.agregarPosicionPeon(player.getPosition()[0],
+                    player.getPosition()[1], player.getId());
+        
+                return true;
+        
+            case 4:
+                if (table.tablero[player.getPosition()[0]][player
+                    .getPosition()[1] - 1] == "v") {
+                System.out.println("Hay una valla aqu�, prueba en otro lugar.");
+                return false;
+                }
+        
+                table.tablero[player.getPosition()[0]][player
+                    .getPosition()[1]] = " ";
+                player.moveLeft();
+                table.agregarPosicionPeon(player.getPosition()[0],
+                    player.getPosition()[1], player.getId());
+        
+                return true;
+        
+            case 5:
+                System.out.println("Regresando...");
+                return false;
+                
+            default:
+                System.out.println("Opci�n inv�lida");
+                return false;
             }
-    
-            // Eliminamos la posici�n del pe�n actual en el tablero.
-            table.tablero[player.getPosition()[0]][player
-                .getPosition()[1]] = " ";
-    
-            // Actualizamos la nueva posici�n del jugador.
-            player.moveUp();
-    
-            // Actualizamos la nueva posici�n del pe�n en la tabla.
-            table.agregarPosicionPeon(player.getPosition()[0],
-                player.getPosition()[1], player.getId());
-            return true;
-    
-    
-          case 2:
-    
-            if (table.tablero[player.getPosition()[0] + 1][player
-                .getPosition()[1]] == "v") {
-              System.out.println("Hay una valla aqu�, prueba en otro lugar.");
-              return false;
-            }
-    
-            table.tablero[player.getPosition()[0]][player
-                .getPosition()[1]] = " ";
-            player.moveDown();
-            table.agregarPosicionPeon(player.getPosition()[0],
-                player.getPosition()[1], player.getId());
-    
-              return true;
-    
-          case 3:
-            if (table.tablero[player.getPosition()[0]][player
-                .getPosition()[1] + 1] == "v") {
-              System.out.println("Hay una valla aqu�, prueba en otro lugar.");
-              return false;
-            }
-    
-            table.tablero[player.getPosition()[0]][player
-                .getPosition()[1]] = " ";
-            player.moveRight();
-            table.agregarPosicionPeon(player.getPosition()[0],
-                player.getPosition()[1], player.getId());
-    
-            return true;
-    
-          case 4:
-            if (table.tablero[player.getPosition()[0]][player
-                .getPosition()[1] - 1] == "v") {
-              System.out.println("Hay una valla aqu�, prueba en otro lugar.");
-              return false;
-            }
-    
-            table.tablero[player.getPosition()[0]][player
-                .getPosition()[1]] = " ";
-            player.moveLeft();
-            table.agregarPosicionPeon(player.getPosition()[0],
-                player.getPosition()[1], player.getId());
-    
-            return true;
-    
-          case 5:
-            System.out.println("Regresando...");
-            return false;
-            
-          default:
-            System.out.println("Opci�n inv�lida");
+        }
+        catch(Exception e){
+            System.out.println("Ha introducido algún valor inválido, intente nuevamente");
             return false;
         }
     
@@ -99,22 +106,67 @@ public class Funciones {
         Boolean responseWalls = false;
         Wall walls = new Wall();
      
-
+        try{
         System.out.println("Opci�n 1: Muro horizontal.\nOpci�n 2: Muro vertical.\nOpci�n 3: Volver.");
-        option = sc.nextInt();
+        option = Integer.parseInt(sc.nextLine());
 
-        switch (option) {
-            case 1:
-                System.out.println("Eliga el n�mero de 'fila' donde desea colocar el muro");
-                positionX = sc.nextInt() - 1;
+            switch (option) {
+                case 1:
+                    System.out.println("Eliga el n�mero de 'fila' donde desea colocar el muro");
+                    positionX = sc.nextInt() - 1;
 
-                System.out.println("Eliga el n�mero de 'columna' donde desea colocar el muro");
-                positionY = sc.nextInt() - 1;
+                    System.out.println("Eliga el n�mero de 'columna' donde desea colocar el muro");
+                    positionY = sc.nextInt() - 1;
 
-                System.out.println(
-                        "�Hacia qui�n lado desea extender el muro?\nOpci�n 1: Izquierda.\nOpci�n 2: Derecha.\nOpci�n 3: Volver.");
+                    System.out.println(
+                            "�Hacia qui�n lado desea extender el muro?\nOpci�n 1: Izquierda.\nOpci�n 2: Derecha.\nOpci�n 3: Volver.");
 
-                option = sc.nextInt();
+                    option = sc.nextInt();
+
+                        if (option != 1 && option != 2) {
+
+                            if (option == 3) {
+                                System.out.println("Regresando...");
+                            } else {
+                                System.out.println("Opci�n no v�lida");
+                            }
+                            return false;
+                        }
+
+                        if (option == 1) {
+
+                            // Guardamos la respuesta (true o false) para ver si es posible colocar una
+                            // valla ah�.
+                            responseWalls = walls.colocarVallaHorizontal(positionX, positionY, positionY - 2, table.tablero,
+                                    pawn.walls);
+
+                            // En caso de que no se pueda colocar un vaya, repetimos el turno.
+                            if (!responseWalls) {
+                                return false;
+                            }
+                        } else {
+                            responseWalls = walls.colocarVallaHorizontal(positionX, positionY, positionY + 2, table.tablero,
+                                    pawn.walls);
+                            if (!responseWalls) {
+                                return false;
+                            }
+                        }
+                        table.mostrarTablero();
+                        return true;
+                    
+
+                case 2:
+
+                    System.out.println("Eliga el n�mero de 'fila' donde desea colocar el muro");
+                    positionX = sc.nextInt() - 1;
+
+                    System.out.println("Eliga el n�mero de 'columna' donde desea colocar el muro");
+                    positionY = sc.nextInt() - 1;
+
+                    System.out.println(
+                            "�Hacia qui�n lado desea extender el muro?\nOpci�n 1: Arriba.\nOpci�n 2: Abajo.\nOpci�n 3: Volver.");
+
+                    option = sc.nextInt();
 
                     if (option != 1 && option != 2) {
 
@@ -127,18 +179,13 @@ public class Funciones {
                     }
 
                     if (option == 1) {
-
-                        // Guardamos la respuesta (true o false) para ver si es posible colocar una
-                        // valla ah�.
-                        responseWalls = walls.colocarVallaHorizontal(positionX, positionY, positionY - 2, table.tablero,
+                        responseWalls = walls.colocarVallaVertical(positionY, positionX, positionX - 2, table.tablero,
                                 pawn.walls);
-
-                        // En caso de que no se pueda colocar un vaya, repetimos el turno.
                         if (!responseWalls) {
                             return false;
                         }
                     } else {
-                        responseWalls = walls.colocarVallaHorizontal(positionX, positionY, positionY + 2, table.tablero,
+                        responseWalls = walls.colocarVallaVertical(positionY, positionX, positionX + 2, table.tablero,
                                 pawn.walls);
                         if (!responseWalls) {
                             return false;
@@ -146,52 +193,17 @@ public class Funciones {
                     }
                     table.mostrarTablero();
                     return true;
-                   
 
-            case 2:
-
-                System.out.println("Eliga el n�mero de 'fila' donde desea colocar el muro");
-                positionX = sc.nextInt() - 1;
-
-                System.out.println("Eliga el n�mero de 'columna' donde desea colocar el muro");
-                positionY = sc.nextInt() - 1;
-
-                System.out.println(
-                        "�Hacia qui�n lado desea extender el muro?\nOpci�n 1: Arriba.\nOpci�n 2: Abajo.\nOpci�n 3: Volver.");
-
-                option = sc.nextInt();
-
-                if (option != 1 && option != 2) {
-
-                    if (option == 3) {
-                        System.out.println("Regresando...");
-                    } else {
-                        System.out.println("Opci�n no v�lida");
-                    }
+                default:
+                    System.out.println("Opción inválida");
                     return false;
-                }
 
-                if (option == 1) {
-                    responseWalls = walls.colocarVallaVertical(positionY, positionX, positionX - 2, table.tablero,
-                            pawn.walls);
-                    if (!responseWalls) {
-                        return false;
-                    }
-                } else {
-                    responseWalls = walls.colocarVallaVertical(positionY, positionX, positionX + 2, table.tablero,
-                            pawn.walls);
-                    if (!responseWalls) {
-                        return false;
-                    }
-                }
-                table.mostrarTablero();
-                return true;
-
-            default:
-                System.out.println("Opción inválida");
-                return false;
-
+            }
         }
+        catch(Exception e){
+            System.out.println("Ha introcido algún valor inválido, intente nuevamente");
+            return false;
+        }    
     }
 
     public void salirJuego(Pawn pawn1, Pawn pawn2, Tablero table){

@@ -33,8 +33,13 @@ public class Jugabilidad {
       // Ciclo para poder repetir las opciones de un jugador sin cambiar el turno.
       endOption = false;
       while (!endOption) {
-        System.out.println("Opci�n 1: Moverse.\nOpci�n 2: Colocar muro.\nOpción 3: Salir del juego.");
-        option = sc.nextInt();
+        try{
+          System.out.println("Opci�n 1: Moverse.\nOpci�n 2: Colocar muro.\nOpción 3: Salir del juego.");
+          option = Integer.parseInt(sc.nextLine());
+        }
+        catch(Exception e){
+          System.out.println("Ha introcido algún valor inválido, intente nuevamente");
+        }
 
       
         switch (option) {
