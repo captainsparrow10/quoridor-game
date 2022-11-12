@@ -5,13 +5,15 @@ import java.util.ArrayList;
 //Clase peones
 public class Pawn {
     String name;
+    String color;
     String id;
     public int walls = 10;
     int counter = 0;
     // https://www.educba.com/2d-arraylist-in-java/
     ArrayList<ArrayList<Integer>> posiciones = new ArrayList<ArrayList<Integer>>();
 
-    public Pawn(String name, String id, int px, int py) {
+    public Pawn(String name, String id, int px, int py, String color) {
+        this.color = color;
         this.name = name;
         this.id = id;
         this.posiciones.add(new ArrayList<Integer>());
@@ -80,6 +82,10 @@ public class Pawn {
 
     public String getName() {
         return this.name;
+    }
+
+    public String getColor() {
+        return this.color;
     }
 
 }

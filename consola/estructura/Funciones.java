@@ -1,13 +1,15 @@
 package consola.estructura;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Scanner;
 import consola.tablero.Tablero;
+import consola.tablero.TableroGUI;
 
 public class Funciones {
     Scanner sc = new Scanner(System.in);
    
     
-    public Boolean movilidadPeon(Pawn player, Tablero table) {
+    public Boolean movilidadPeon(Pawn player, Tablero table, TableroGUI table2) {
         int option;
         try{
 
@@ -29,14 +31,28 @@ public class Funciones {
                 // Eliminamos la posici�n del pe�n actual en el tablero.
                 table.tablero[player.getPosition()[0]][player
                     .getPosition()[1]] = " ";
+                table2.boxes[player.getPosition()[0]][player
+                    .getPosition()[1]].setBackground(Color.WHITE);
+
+                
         
                 // Actualizamos la nueva posici�n del jugador.
                 player.moveUp();
+                
         
                 // Actualizamos la nueva posici�n del pe�n en la tabla.
                 table.agregarPosicionPeon(player.getPosition()[0],
                     player.getPosition()[1], player.getId());
+
+                
+                // Actualizar tableroGUI
+                table2.boxes[player.getPosition()[0]][player
+                .getPosition()[1]].setBackground(Color.decode(player.getColor()));
+
+                
                 return true;
+
+        
         
         
             case 2:
@@ -49,10 +65,13 @@ public class Funciones {
         
                 table.tablero[player.getPosition()[0]][player
                     .getPosition()[1]] = " ";
+                table2.boxes[player.getPosition()[0]][player
+                    .getPosition()[1]].setBackground(Color.WHITE);
                 player.moveDown();
                 table.agregarPosicionPeon(player.getPosition()[0],
                     player.getPosition()[1], player.getId());
-        
+                table2.boxes[player.getPosition()[0]][player
+                    .getPosition()[1]].setBackground(Color.decode(player.getColor()));
                 return true;
         
             case 3:
@@ -64,7 +83,12 @@ public class Funciones {
         
                 table.tablero[player.getPosition()[0]][player
                     .getPosition()[1]] = " ";
+                table2.boxes[player.getPosition()[0]][player
+                    .getPosition()[1]].setBackground(Color.WHITE);
+               
                 player.moveRight();
+                table2.boxes[player.getPosition()[0]][player
+                    .getPosition()[1]].setBackground(Color.decode(player.getColor()));
                 table.agregarPosicionPeon(player.getPosition()[0],
                     player.getPosition()[1], player.getId());
         
@@ -79,7 +103,12 @@ public class Funciones {
         
                 table.tablero[player.getPosition()[0]][player
                     .getPosition()[1]] = " ";
+                    table2.boxes[player.getPosition()[0]][player
+                .getPosition()[1]].setBackground(Color.WHITE);
+                
                 player.moveLeft();
+                table2.boxes[player.getPosition()[0]][player
+                    .getPosition()[1]].setBackground(Color.decode(player.getColor()));
                 table.agregarPosicionPeon(player.getPosition()[0],
                     player.getPosition()[1], player.getId());
         
@@ -101,7 +130,7 @@ public class Funciones {
     
       }
 
-    public Boolean colocarMuro(Pawn pawn, Tablero table) {
+    public Boolean colocarMuro(Pawn pawn, Tablero table, TableroGUI table2) {
         int option, positionX, positionY;
         Boolean responseWalls = false;
         Wall walls = new Wall();
@@ -138,15 +167,15 @@ public class Funciones {
                             // Guardamos la respuesta (true o false) para ver si es posible colocar una
                             // valla ah�.
                             responseWalls = walls.colocarVallaHorizontal(positionX, positionY, positionY - 2, table.tablero,
-                                    pawn.walls);
+                                    pawn.walls, table2);
 
                             // En caso de que no se pueda colocar un vaya, repetimos el turno.
                             if (!responseWalls) {
                                 return false;
-                            }
+                            } 
                         } else {
                             responseWalls = walls.colocarVallaHorizontal(positionX, positionY, positionY + 2, table.tablero,
-                                    pawn.walls);
+                                    pawn.walls, table2);
                             if (!responseWalls) {
                                 return false;
                             }
@@ -180,13 +209,13 @@ public class Funciones {
 
                     if (option == 1) {
                         responseWalls = walls.colocarVallaVertical(positionY, positionX, positionX - 2, table.tablero,
-                                pawn.walls);
+                                pawn.walls, table2);
                         if (!responseWalls) {
                             return false;
                         }
                     } else {
                         responseWalls = walls.colocarVallaVertical(positionY, positionX, positionX + 2, table.tablero,
-                                pawn.walls);
+                                pawn.walls, table2);
                         if (!responseWalls) {
                             return false;
                         }
@@ -216,17 +245,19 @@ public class Funciones {
   
     }
 
-    public void iniciarJugadores(Tablero table, ArrayList<Pawn> listaPlayers ){
+    public void iniciarJugadores(Tablero table, ArrayList<Pawn> listaPlayers, TableroGUI table2 ){
         String name;
         table.llenartablero();
         table.mostrarTablero();
+        table2.createAndDisplayGUI();
 
     System.out.println("Ingrese nombre del jugador #1");
     name = sc.nextLine();
 
     // Inicializamos el primer player y lo agregaros a la lista de jugadores.
-    Pawn player1 = new Pawn(name, "A", 0, 8);
+    Pawn player1 = new Pawn(name, "A", 0, 8, "#FF0000");
     listaPlayers.add(player1);
+    table2.boxes[0][8].setBackground(Color.RED);
 
     // Actualizamos la posici�n del player en el tablero.
     table.agregarPosicionPeon(listaPlayers.get(0).getPosition()[0], listaPlayers.get(0).getPosition()[1],
@@ -235,8 +266,9 @@ public class Funciones {
     System.out.println("Ingrese nombre del jugador #2");
     name = sc.nextLine();
 
-    Pawn player2 = new Pawn(name, "B", 16, 8);
+    Pawn player2 = new Pawn(name, "B", 16, 8, "#0000ff");
     listaPlayers.add(player2);
+    table2.boxes[16][8].setBackground(Color.BLUE);
     table.agregarPosicionPeon(listaPlayers.get(1).getPosition()[0], listaPlayers.get(1).getPosition()[1],
         listaPlayers.get(1).getId());
 
