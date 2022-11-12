@@ -1,14 +1,14 @@
 package consola.estructura;
 
-import java.util.Scanner;
+
 import consola.tablero.Tablero;
 import consola.tablero.TableroGUI;
 import java.util.ArrayList;
+import javax.swing.*;  
 
 public class Jugabilidad {
     public void iniciarJuego(){
       Tablero table = new Tablero();
-      Scanner sc = new Scanner(System.in);
       Funciones funct = new Funciones();
       ArrayList<Pawn> listaPlayers = new ArrayList<Pawn>();
       TableroGUI table2 = new TableroGUI();
@@ -30,17 +30,15 @@ public class Jugabilidad {
       } else {
         playerActual = 1;
       }
-      System.out.println("\nTurno de: " + listaPlayers.get(playerActual).getName() + ".");
 
       // Ciclo para poder repetir las opciones de un jugador sin cambiar el turno.
       endOption = false;
       while (!endOption) {
         try{
-          System.out.println("Opci�n 1: Moverse.\nOpci�n 2: Colocar muro.\nOpción 3: Salir del juego.");
-          option = Integer.parseInt(sc.nextLine());
+          option = Integer.parseInt(JOptionPane.showInputDialog(null,"Opci�n 1: Moverse.\nOpci�n 2: Colocar muro.\nOpción 3: Salir del juego.", "\nTurno de: " + listaPlayers.get(playerActual).getName() + ".", JOptionPane.INFORMATION_MESSAGE));
         }
         catch(Exception e){
-          System.out.println("Ha introcido algún valor inválido, intente nuevamente");
+          System.err.println(e);
         }
 
       
@@ -67,7 +65,7 @@ public class Jugabilidad {
       }
     }
 
-    sc.close();
+   
 
   }
 

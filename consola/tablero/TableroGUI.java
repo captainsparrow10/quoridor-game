@@ -1,4 +1,5 @@
 package consola.tablero;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -15,7 +16,6 @@ public class TableroGUI extends JFrame implements ActionListener {
     private JButton putWallButton;
     JPanel leftPanel;
     Funciones func = new Funciones();
-    
 
     public void createAndDisplayGUI() {
 
@@ -24,7 +24,7 @@ public class TableroGUI extends JFrame implements ActionListener {
         // Panel de opciones.
         // Todavía no tiene función las opciones.
         createOption();
-        
+
         contentPane.add(leftPanel);
 
         // Panel del botón
@@ -35,8 +35,21 @@ public class TableroGUI extends JFrame implements ActionListener {
             for (int j = 0; j < gridSize; j++) {
                 JButton box = new JButton();
                 box.setActionCommand((i + 1) + "-" + (j + 1));
-                box.setBackground(Color.WHITE);
-                box.setPreferredSize(new Dimension(boxSize, boxSize));
+                if (i % 2 == 0) {
+                    if (j % 2 == 0) {
+                        box.setPreferredSize(new Dimension(boxSize, boxSize));
+                        box.setBackground(Color.black);
+                    } else {
+
+                        box.setPreferredSize(new Dimension(10, 10));
+                        box.setBackground(Color.gray);
+
+                    }
+                } else {
+                    box.setPreferredSize(new Dimension(10, 10));
+                    box.setBackground(Color.gray);
+                }
+
                 box.addActionListener(this);
                 buttonPanel.add(box);
                 boxes[i][j] = box;
@@ -46,6 +59,7 @@ public class TableroGUI extends JFrame implements ActionListener {
         contentPane.add(buttonPanel);
 
         this.setContentPane(contentPane);
+        this.setSize(800, 800);
         this.pack();
         this.setLocationByPlatform(true);
         this.setVisible(true);
@@ -53,25 +67,23 @@ public class TableroGUI extends JFrame implements ActionListener {
         this.setLocationRelativeTo(null);
     }
 
-
     public void createOption() {
 
         leftPanel = new JPanel();
-
 
         startButton = new JButton();
         startButton.setText("Iniciar");
         startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-         
+
             }
         });
-        
+
         moveButton = new JButton();
         moveButton.setText("Mover");
         moveButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-         
+
             }
         });
 
@@ -79,7 +91,7 @@ public class TableroGUI extends JFrame implements ActionListener {
         putWallButton.setText("Colocar muro");
         putWallButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-         
+
             }
         });
 
@@ -87,7 +99,7 @@ public class TableroGUI extends JFrame implements ActionListener {
         finishButton.setText("Terminar");
         finishButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-         
+
             }
         });
 
@@ -99,7 +111,8 @@ public class TableroGUI extends JFrame implements ActionListener {
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
     }
 
-    // Todavía no tiene uso, probablemente lo utilizaremos para cuando el control sea mediante clicks a las casillas.
+    // Todavía no tiene uso, probablemente lo utilizaremos para cuando el control
+    // sea mediante clicks a las casillas.
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -114,9 +127,5 @@ public class TableroGUI extends JFrame implements ActionListener {
         }
 
     }
-
-
-
-
 
 }
