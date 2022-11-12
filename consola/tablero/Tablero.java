@@ -15,7 +15,7 @@ public class Tablero {
           if(j%2 == 0){
             tablero[i][j] = "x";
           } else {
-            tablero[i][j] = "c";
+            tablero[i][j] = "x";
           }
         }else {
           if(j != 0 && j%2 != 0){
