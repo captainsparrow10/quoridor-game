@@ -2,7 +2,7 @@ package consola.estructura;
 
 import java.util.Scanner;
 import consola.tablero.Tablero;
-
+import consola.tablero.TableroGUI;
 import java.util.ArrayList;
 
 public class Jugabilidad {
@@ -11,10 +11,12 @@ public class Jugabilidad {
       Scanner sc = new Scanner(System.in);
       Funciones funct = new Funciones();
       ArrayList<Pawn> listaPlayers = new ArrayList<Pawn>();
+      TableroGUI table2 = new TableroGUI();
+      
       int playerActual, option = 0;
       Boolean end = false, endOption = false;
     
-    funct.iniciarJugadores(table, listaPlayers);
+    funct.iniciarJugadores(table, listaPlayers, table2);
 
     // Colocamos el player actual.
     playerActual = 1;
@@ -44,10 +46,10 @@ public class Jugabilidad {
       
         switch (option) {
           case 1:
-          endOption = funct.movilidadPeon(listaPlayers.get(playerActual), table);
+          endOption = funct.movilidadPeon(listaPlayers.get(playerActual), table, table2);
             break;
           case 2:
-          endOption = funct.colocarMuro(listaPlayers.get(playerActual), table);
+          endOption = funct.colocarMuro(listaPlayers.get(playerActual), table, table2);
             break;
 
           case 3:
