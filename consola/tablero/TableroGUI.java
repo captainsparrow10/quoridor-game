@@ -7,7 +7,7 @@ import consola.estructura.Funciones;
 
 public class TableroGUI extends JFrame implements ActionListener {
     private static int gridSize = 17;
-    private static int boxSize = 30;
+    private static int boxSize = 50;
     public static int[] actualBox = new int[2];
     public final JButton[][] boxes = new JButton[gridSize][gridSize];
     private JButton startButton;
@@ -15,6 +15,7 @@ public class TableroGUI extends JFrame implements ActionListener {
     private JButton moveButton;
     private JButton putWallButton;
     JPanel leftPanel;
+    Font font = new Font("Arial", Font.BOLD, 15);
     Funciones func = new Funciones();
 
     public void createAndDisplayGUI() {
@@ -30,28 +31,38 @@ public class TableroGUI extends JFrame implements ActionListener {
         // Panel del botón
         JPanel buttonPanel = new JPanel();
 
-        buttonPanel.setLayout(new GridLayout(gridSize, gridSize));
+        buttonPanel.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
         for (int i = 0; i < gridSize; i++) {
+            c.gridy = i;
             for (int j = 0; j < gridSize; j++) {
+                c.gridx = j;
+                
+                c.weightx = 0.5;
                 JButton box = new JButton();
                 box.setActionCommand((i + 1) + "-" + (j + 1));
+                box.setFont(font);
+                box.setForeground(Color.WHITE);
+                box.setMargin(new Insets(1, 1, 1, 1));
                 if (i % 2 == 0) {
+                    c.fill = GridBagConstraints.HORIZONTAL;
                     if (j % 2 == 0) {
                         box.setPreferredSize(new Dimension(boxSize, boxSize));
                         box.setBackground(Color.black);
+                 
                     } else {
-
-                        box.setPreferredSize(new Dimension(10, 10));
+                        c.fill = GridBagConstraints.VERTICAL;
+                        box.setPreferredSize(new Dimension(5, 5));
                         box.setBackground(Color.gray);
 
                     }
                 } else {
-                    box.setPreferredSize(new Dimension(10, 10));
+                    box.setPreferredSize(new Dimension(5, 5));
                     box.setBackground(Color.gray);
                 }
 
                 box.addActionListener(this);
-                buttonPanel.add(box);
+                buttonPanel.add(box, c);
                 boxes[i][j] = box;
             }
         }
