@@ -19,7 +19,7 @@ public class Funciones {
 
                     if (table.tablero[player.getPosition()[1] - 1][player
                             .getPosition()[1]] == "v") {
-                        System.out.println("Hay una valla aqu�, prueba en otro lugar.");
+                                JOptionPane.showMessageDialog(null, "Hay una vaya aquí, prueba en otro lugar", "a", JOptionPane.ERROR_MESSAGE);
                         return false;
                     }
 
@@ -47,7 +47,7 @@ public class Funciones {
 
                     if (table.tablero[player.getPosition()[0] + 1][player
                             .getPosition()[1]] == "v") {
-                        System.out.println("Hay una valla aqu�, prueba en otro lugar.");
+                                JOptionPane.showMessageDialog(null, "Hay una vaya aquí, prueba en otro lugar", "a", JOptionPane.ERROR_MESSAGE);
                         return false;
                     }
 
@@ -65,7 +65,7 @@ public class Funciones {
                 case 3:
                     if (table.tablero[player.getPosition()[0]][player
                             .getPosition()[1] + 1] == "v") {
-                        System.out.println("Hay una valla aqu�, prueba en otro lugar.");
+                                JOptionPane.showMessageDialog(null, "Hay una vaya aquí, prueba en otro lugar", "a", JOptionPane.ERROR_MESSAGE);
                         return false;
                     }
 
@@ -85,7 +85,7 @@ public class Funciones {
                 case 4:
                     if (table.tablero[player.getPosition()[0]][player
                             .getPosition()[1] - 1] == "v") {
-                        System.out.println("Hay una valla aqu�, prueba en otro lugar.");
+                                JOptionPane.showMessageDialog(null, "Hay una vaya aquí, prueba en otro lugar", "a", JOptionPane.ERROR_MESSAGE);
                         return false;
                     }
 
@@ -103,15 +103,16 @@ public class Funciones {
                     return true;
 
                 case 5:
-                    System.out.println("Regresando...");
+                JOptionPane.showMessageDialog(null, "Regresando...", "a", JOptionPane.ERROR_MESSAGE);
                     return false;
 
                 default:
-                    System.out.println("Opci�n inv�lida");
+                JOptionPane.showMessageDialog(null, "Opcion valida", "Mensaje de error", JOptionPane.ERROR_MESSAGE);
                     return false;
             }
         } catch (Exception e) {
-            System.out.println("Ha introducido algún valor inválido, intente nuevamente");
+            JOptionPane.showMessageDialog(null, "Valor no valido", "Mensaje de error", JOptionPane.ERROR_MESSAGE);
+
             return false;
         }
 
@@ -134,14 +135,16 @@ public class Funciones {
                     positionY = Integer.parseInt(JOptionPane.showInputDialog(
                             "Eliga el n�mero de 'columna' donde desea colocar el muro")) - 1;
 
+                    if ((positionX + 1) % 2 != 0 || (positionY + 1) % 2 == 0) {
+        
+                                JOptionPane.showMessageDialog(null, "Fila o Columna no valida", "a", JOptionPane.ERROR_MESSAGE);
+                                return false;
+                            }
+
                     option = Integer.parseInt(JOptionPane
                             .showInputDialog(
                                     "�Hacia qui�n lado desea extender el muro?\nOpci�n 1: Izquierda.\nOpci�n 2: Derecha.\nOpci�n 3: Volver."));
-                    if (positionX + 1 % 2 == 0 || positionY + 1 % 2 == 0) {
-                        System.out.println("Fila o Columna no valida");
-                        return false;
-
-                    }
+                   
 
                     if (option != 1 && option != 2) {
 
@@ -157,7 +160,7 @@ public class Funciones {
 
                         // Guardamos la respuesta (true o false) para ver si es posible colocar una
                         // valla ah�.
-                        responseWalls = walls.colocarVallaHorizontal(positionX, positionY, positionY - 2, table.tablero,
+                        responseWalls = walls.colocarVallaHorizontal(positionX, positionY, positionY - 2, positionY -1, table.tablero,
                                 pawn.walls, table2);
 
                         // En caso de que no se pueda colocar un vaya, repetimos el turno.
@@ -165,7 +168,7 @@ public class Funciones {
                             return false;
                         }
                     } else {
-                        responseWalls = walls.colocarVallaHorizontal(positionX, positionY, positionY + 2, table.tablero,
+                        responseWalls = walls.colocarVallaHorizontal(positionX, positionY, positionY + 2, positionY +1, table.tablero,
                                 pawn.walls, table2);
                         if (!responseWalls) {
                             return false;
@@ -181,10 +184,10 @@ public class Funciones {
                     positionY = Integer.parseInt(JOptionPane.showInputDialog(
                             "Eliga el n�mero de 'columna' donde desea colocar el muro")) - 1;
 
-                    if (positionX + 1 % 2 == 0 || positionY + 1 % 2 == 0) {
-                        System.out.println("Fila o Columna no valida");
-                        return false;
-                    }
+                    if ((positionX + 1) % 2 == 0 || (positionY + 1) % 2 != 0) {
+                                JOptionPane.showMessageDialog(null, "Fila o Columna no valida", "a", JOptionPane.ERROR_MESSAGE);
+                                return false;
+                            }
 
                     option = Integer.parseInt(JOptionPane.showInputDialog(
                             "�Hacia qui�n lado desea extender el muro?\nOpci�n 1: Arriba.\nOpci�n 2: Abajo.\nOpci�n 3: Volver."));
@@ -199,13 +202,13 @@ public class Funciones {
                     }
 
                     if (option == 1) {
-                        responseWalls = walls.colocarVallaVertical(positionY, positionX, positionX - 2, table.tablero,
+                        responseWalls = walls.colocarVallaVertical(positionY, positionX, positionX - 2, positionX -1, table.tablero,
                                 pawn.walls, table2);
                         if (!responseWalls) {
                             return false;
                         }
                     } else {
-                        responseWalls = walls.colocarVallaVertical(positionY, positionX, positionX + 2, table.tablero,
+                        responseWalls = walls.colocarVallaVertical(positionY, positionX, positionX + 2, positionX + 1, table.tablero,
                                 pawn.walls, table2);
                         if (!responseWalls) {
                             return false;
@@ -228,7 +231,6 @@ public class Funciones {
     public void salirJuego(Pawn pawn1, Pawn pawn2, Tablero table) {
         System.out.println("Saliendo del juego...");
         System.out.println("Posición de cada jugador...");
-        table.mostrarTablero();
         System.out.println();
         pawn1.obtenerHistorial();
         pawn2.obtenerHistorial();
@@ -264,12 +266,13 @@ public class Funciones {
 
     public Boolean jugadorGanador(ArrayList<Pawn> listaPlayers) {
         if (listaPlayers.get(0).getPosition()[0] == 16) {
-            System.out.println("Felicidades " + listaPlayers.get(0).getName() + ", haz ganado.");
+            JOptionPane.showMessageDialog(null, "Felicidades " + listaPlayers.get(0).getName() + ", haz ganado.", "mensaje de acierto", JOptionPane.DEFAULT_OPTION);
+
             return true;
         }
 
         if (listaPlayers.get(1).getPosition()[0] == 0) {
-            System.out.println("Felicidades " + listaPlayers.get(1).getName() + ", haz ganado.");
+            JOptionPane.showMessageDialog(null, "Felicidades " + listaPlayers.get(1).getName() + ", haz ganado.", "mensaje de acierto", JOptionPane.DEFAULT_OPTION);
             return true;
         }
 
