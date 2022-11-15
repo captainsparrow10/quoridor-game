@@ -50,7 +50,7 @@ public class Jugabilidad {
             break;
 
           case 3:
-            funct.salirJuego(listaPlayers.get(0), listaPlayers.get(1), table);
+            funct.salirJuego(listaPlayers.get(0), listaPlayers.get(1), table, table2);
             return;
 
           default:
