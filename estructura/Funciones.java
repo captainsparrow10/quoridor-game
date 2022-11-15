@@ -81,6 +81,7 @@ public class Funciones {
                 case 3:
 
                     if ((player.getPosition()[1] + 2) > 16) {
+                   
                         JOptionPane.showMessageDialog(null, "Movimiento no válido, sale del tablero.", "movimiento no valido",
                                 JOptionPane.ERROR_MESSAGE);
                         return false;
@@ -107,6 +108,7 @@ public class Funciones {
 
                 case 4:
                     if ((player.getPosition()[1] - 2) < 0) {
+                        System.out.println(player.getPosition()[1] - 2);
                         JOptionPane.showMessageDialog(null, "Movimiento no válido, sale del tablero.", "movimiento no valido",
                                 JOptionPane.ERROR_MESSAGE);
                         return false;
@@ -206,6 +208,9 @@ public class Funciones {
                         }
                     }
                     pawn.walls -= 1;
+
+                    table2.walls[pawn.getIdN()][pawn.walls].setBackground(Color.black);
+                    
                     return true;
 
                 case 2:
@@ -248,6 +253,7 @@ public class Funciones {
                         }
                     }
                     pawn.walls -= 1;
+                    table2.walls[pawn.getIdN()][pawn.walls].setBackground(Color.black);
                     return true;
 
                 default:
@@ -262,10 +268,11 @@ public class Funciones {
         }
     }
 
-    public void salirJuego(Pawn pawn1, Pawn pawn2, Tablero table) {
+    public void salirJuego(Pawn pawn1, Pawn pawn2, Tablero table, TableroGUI table2) {
         JOptionPane.showMessageDialog(null, "Saliendo del juego.", "a", 1);
         pawn1.obtenerHistorial();
         pawn2.obtenerHistorial();
+        table2.destroyGame();
 
     }
 
@@ -277,7 +284,7 @@ public class Funciones {
         name = JOptionPane.showInputDialog("Ingrese nombre del jugador #1");
 
         // Inicializamos el primer player y lo agregaros a la lista de jugadores.
-        Pawn player1 = new Pawn(name, "A", 0, 8, "#FF0000");
+        Pawn player1 = new Pawn(name, "A", 0, 8, "#FF0000", 0);
         listaPlayers.add(player1);
         table2.boxes[0][8].setBackground(Color.RED);
 
@@ -287,7 +294,7 @@ public class Funciones {
 
         name = JOptionPane.showInputDialog("Ingrese nombre del jugador #2");
 
-        Pawn player2 = new Pawn(name, "B", 16, 8, "#0000ff");
+        Pawn player2 = new Pawn(name, "B", 16, 8, "#0000ff", 1);
         listaPlayers.add(player2);
         table2.boxes[16][8].setBackground(Color.BLUE);
         table.agregarPosicionPeon(listaPlayers.get(1).getPosition()[0], listaPlayers.get(1).getPosition()[1],

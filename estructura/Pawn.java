@@ -9,15 +9,17 @@ public class Pawn {
     String name;
     String color;
     String id;
+    int idN;
     public int walls = 10;
     int counter = 0;
     // https://www.educba.com/2d-arraylist-in-java/
     ArrayList<ArrayList<Integer>> posiciones = new ArrayList<ArrayList<Integer>>();
 
-    public Pawn(String name, String id, int px, int py, String color) {
+    public Pawn(String name, String id, int px, int py, String color, int idN) {
         this.color = color;
         this.name = name;
         this.id = id;
+        this.idN = idN;
         this.posiciones.add(new ArrayList<Integer>());
         this.posiciones.get(this.counter).add(0, px);
         this.posiciones.get(this.counter).add(1, py);
@@ -77,6 +79,10 @@ public class Pawn {
 
     public String getId() {
         return this.id;
+    }
+
+    public int getIdN(){
+        return this.idN;
     }
 
     public String getName() {
