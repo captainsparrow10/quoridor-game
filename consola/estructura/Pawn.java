@@ -2,6 +2,8 @@ package consola.estructura;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 //Clase peones
 public class Pawn {
     String name;
@@ -56,11 +58,12 @@ public class Pawn {
     }
 
     public void obtenerHistorial(){
-        System.out.println("Recorrido de " + this.name);
+        String message = "";
+        message += "Recorrido de " + this.name + "\n" + "Walls: " + this.walls + "\n";
         for(int i = 0; i < posiciones.size(); i++){
-            System.out.println("Turno número " + (i+1) + " de " + this.name + ":");
-            System.out.println("X: " + posiciones.get(i).get(0) + "   Y: " + posiciones.get(0).get(1));
+          message +=  "Turno número " + (i+1) + " de " + this.name + ":\n" + "X: " + posiciones.get(i).get(0) + "   Y: " + posiciones.get(i).get(1) + "\n";
         }
+        JOptionPane.showMessageDialog(null, message, "a", 1);
         
         
     }
@@ -68,10 +71,6 @@ public class Pawn {
     // Funciones para obtener y actualizar la cantidad de walls del peón. (Jugador)
     public int getWalls() {
         return walls;
-    }
-
-    public void setWalls(int newWalls) {
-        this.walls = newWalls;
     }
 
     // Función para obtener y mostrar el id
