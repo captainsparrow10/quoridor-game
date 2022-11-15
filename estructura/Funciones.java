@@ -1,9 +1,9 @@
-package consola.estructura;
+package estructura;
 
 import java.awt.Color;
 import java.util.ArrayList;
-import consola.tablero.Tablero;
-import consola.tablero.TableroGUI;
+import tablero.Tablero;
+import tablero.TableroGUI;
 import javax.swing.*;
 
 public class Funciones {

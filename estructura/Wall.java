@@ -1,8 +1,8 @@
-package consola.estructura;
+package estructura;
 
 import java.awt.Color;
 import javax.swing.*;  
-import consola.tablero.TableroGUI;
+import tablero.TableroGUI;
 
 //Clase walls
 public class Wall {

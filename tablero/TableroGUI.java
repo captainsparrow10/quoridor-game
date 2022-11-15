@@ -1,9 +1,9 @@
-package consola.tablero;
+package tablero;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import consola.estructura.Funciones;
+import estructura.Funciones;
 
 public class TableroGUI extends JFrame implements ActionListener {
     private static int gridSize = 17;
