@@ -36,8 +36,15 @@ public class Funciones {
                     table.tablero[player.getPosition()[0]][player
                             .getPosition()[1]] = " ";
 
-                    table2.boxes[player.getPosition()[0]][player
-                            .getPosition()[1]].setBackground(Color.BLACK);
+                            System.out.println(table2.boxes[player.getPosition()[0]][player
+                            .getPosition()[1]].getBackground().getRed());
+                            System.out.println(table2.boxes[player.getPosition()[0]][player
+                            .getPosition()[1]].getBackground().getGreen());
+                            System.out.println(table2.boxes[player.getPosition()[0]][player
+                            .getPosition()[1]].getBackground().getBlue());
+
+                    
+                    
 
                     // Actualizamos la nueva posici�n del jugador.
                     player.moveUp();
@@ -284,7 +291,7 @@ public class Funciones {
         name = JOptionPane.showInputDialog("Ingrese nombre del jugador #1");
 
         // Inicializamos el primer player y lo agregaros a la lista de jugadores.
-        Pawn player1 = new Pawn(name, "A", 0, 8, "#FF0000", 0);
+        Pawn player1 = new Pawn(name, "A", 0, 8, "#ffffff", 0);
         listaPlayers.add(player1);
         table2.boxes[0][8].setBackground(Color.RED);
 
@@ -294,7 +301,7 @@ public class Funciones {
 
         name = JOptionPane.showInputDialog("Ingrese nombre del jugador #2");
 
-        Pawn player2 = new Pawn(name, "B", 16, 8, "#0000ff", 1);
+        Pawn player2 = new Pawn(name, "B", 16, 8, "#ff0000", 1);
         listaPlayers.add(player2);
         table2.boxes[16][8].setBackground(Color.BLUE);
         table.agregarPosicionPeon(listaPlayers.get(1).getPosition()[0], listaPlayers.get(1).getPosition()[1],
@@ -302,17 +309,18 @@ public class Funciones {
 
     }
 
-    public Boolean jugadorGanador(ArrayList<Pawn> listaPlayers) {
+    public Boolean jugadorGanador(ArrayList<Pawn> listaPlayers, TableroGUI table2) {
         if (listaPlayers.get(0).getPosition()[0] == 16) {
             JOptionPane.showMessageDialog(null, "Felicidades " + listaPlayers.get(0).getName() + ", haz ganado.",
                     "mensaje de acierto", 1);
-
+           table2.destroyGame();
             return true;
         }
 
         if (listaPlayers.get(1).getPosition()[0] == 0) {
             JOptionPane.showMessageDialog(null, "Felicidades " + listaPlayers.get(1).getName() + ", haz ganado.",
                     "mensaje de acierto", 1);
+            table2.destroyGame();
             return true;
         }
 

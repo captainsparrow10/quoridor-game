@@ -12,7 +12,6 @@ public class Wall {
         if (walls > 0) {
 
             if (tablero[x][y3] == "x" && tablero[x][y2] == "x" && tablero[x][y1] == "x") {
-
                 tablero[x][y1] = "v";
                 tablero[x][y2] = "v";
                 tablero[x][y3] = "v";
@@ -25,9 +24,7 @@ public class Wall {
                 }
                 y0 = y1 - 1;
                 y4 = y2 + 1;
-                System.out.println(y4);
-                System.out.println(y0);
-                if (y0 > -1 && y4 > -1) {
+                if (y0 > -1 && y0 < 17) {
 
                     if (tablero[x][y0] == "x" && tablero[x][y0 - 1] == "v"
                             || tablero[x][y0] == "x" && tablero[x - 1][y0] == "v"
@@ -35,6 +32,10 @@ public class Wall {
                         tablero[x][y0] = "v";
                         table2.boxes[x][y0].setBackground(Color.yellow);
                     }
+                }
+
+                if (y4 > -1 && y4 < 17) {
+
                     if (tablero[x][y4] == "x" && tablero[x][y4 + 1] == "v"
                             || tablero[x][y4] == "x" && tablero[x - 1][y4] == "v"
                             || tablero[x][y4] == "x" && tablero[x + 1][y4] == "v") {
@@ -79,7 +80,7 @@ public class Wall {
                 }
                 x0 = x1 - 1;
                 x4 = x2 + 1;
-                if (x0 > -1 && x4 > -1) {
+                if (x0 > -1 && x0 < 17) {
                     if (tablero[x0][y] == "x" && tablero[x0 - 1][y] == "v"
                             || tablero[x0][y] == "x" && tablero[x0][y - 1] == "v"
                             || tablero[x0][y] == "x" && tablero[x0][y + 1] == "v") {
@@ -87,6 +88,9 @@ public class Wall {
                         table2.boxes[x0][y].setBackground(Color.yellow);
 
                     }
+                }
+
+                if (x4 > -1 && x4 < 17) {
                     if (tablero[x4][y] == "x" && tablero[x4 + 1][y] == "v"
                             || tablero[x4][y] == "x" && tablero[x4][y - 1] == "v"
                             || tablero[x4][y] == "x" && tablero[x4][y + 1] == "v") {

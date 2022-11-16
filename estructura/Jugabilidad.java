@@ -50,6 +50,7 @@ public class Jugabilidad {
             break;
 
           case 3:
+            JOptionPane.showMessageDialog(null, "Salida interrumpida.", "mensaje de error.", JOptionPane.ERROR_MESSAGE);
             funct.salirJuego(listaPlayers.get(0), listaPlayers.get(1), table, table2);
             return;
 
@@ -59,7 +60,10 @@ public class Jugabilidad {
         }
 
         // Wincodition
-        end = funct.jugadorGanador(listaPlayers);
+        end = funct.jugadorGanador(listaPlayers, table2);
+        if(end == true){
+          funct.salirJuego(listaPlayers.get(0), listaPlayers.get(1), table, table2);
+        }
 
       }
     }
