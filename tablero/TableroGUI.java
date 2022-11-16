@@ -69,7 +69,7 @@ public class TableroGUI extends JFrame implements ActionListener {
                         if (j % 2 == 0) {
                             if (j == 0 || j == 20) {
                                 box.setPreferredSize(new Dimension(boxSize, boxSize));
-                                box.setBackground(Color.decode("#663300"));
+                                box.setBackground(Color.gray);
                             } else {
                                 box.setPreferredSize(new Dimension(boxSize, boxSize));
                                 box.setBackground(Color.black);
