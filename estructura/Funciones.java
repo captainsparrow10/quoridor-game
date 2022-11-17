@@ -17,9 +17,9 @@ public class Funciones {
             switch (option) {
                 case 1:
 
-
                     if ((player.getPosition()[0] - 2) < 0) {
-                        JOptionPane.showMessageDialog(null, "Movimiento no válido, sale del tablero.", "movimiento no valido",
+                        JOptionPane.showMessageDialog(null, "Movimiento no válido, sale del tablero.",
+                                "movimiento no valido",
                                 JOptionPane.ERROR_MESSAGE);
                         return false;
                     }
@@ -31,20 +31,15 @@ public class Funciones {
                         return false;
                     }
 
-
                     // Eliminamos la posici�n del pe�n actual en el tablero.
                     table.tablero[player.getPosition()[0]][player
                             .getPosition()[1]] = " ";
 
-                            System.out.println(table2.boxes[player.getPosition()[0]][player
-                            .getPosition()[1]].getBackground().getRed());
-                            System.out.println(table2.boxes[player.getPosition()[0]][player
-                            .getPosition()[1]].getBackground().getGreen());
-                            System.out.println(table2.boxes[player.getPosition()[0]][player
-                            .getPosition()[1]].getBackground().getBlue());
-
-                    
-                    
+                    if (table2.boxes[player.getPosition()[0]][player
+                            .getPosition()[1]].getBackground().getRGB() == player.getColor()) {
+                        table2.boxes[player.getPosition()[0]][player
+                                .getPosition()[1]].setBackground(Color.black);
+                    }
 
                     // Actualizamos la nueva posici�n del jugador.
                     player.moveUp();
@@ -55,14 +50,15 @@ public class Funciones {
 
                     // Actualizar tableroGUI
                     table2.boxes[player.getPosition()[0]][player
-                            .getPosition()[1]].setBackground(Color.decode(player.getColor()));
+                            .getPosition()[1]].setBackground(new Color((player.getColor())));
 
                     return true;
 
                 case 2:
 
                     if ((player.getPosition()[0] + 2) > 16) {
-                        JOptionPane.showMessageDialog(null, "Movimiento no válido, sale del tablero.", "movimiento no valido",
+                        JOptionPane.showMessageDialog(null, "Movimiento no válido, sale del tablero.",
+                                "movimiento no valido",
                                 JOptionPane.ERROR_MESSAGE);
                         return false;
                     }
@@ -76,20 +72,24 @@ public class Funciones {
 
                     table.tablero[player.getPosition()[0]][player
                             .getPosition()[1]] = " ";
-                    table2.boxes[player.getPosition()[0]][player
-                            .getPosition()[1]].setBackground(Color.BLACK);
+                    if (table2.boxes[player.getPosition()[0]][player
+                            .getPosition()[1]].getBackground().getRGB() == player.getColor()) {
+                        table2.boxes[player.getPosition()[0]][player
+                                .getPosition()[1]].setBackground(Color.black);
+                    }
                     player.moveDown();
                     table.agregarPosicionPeon(player.getPosition()[0],
                             player.getPosition()[1], player.getId());
                     table2.boxes[player.getPosition()[0]][player
-                            .getPosition()[1]].setBackground(Color.decode(player.getColor()));
+                            .getPosition()[1]].setBackground(new Color((player.getColor())));
                     return true;
 
                 case 3:
 
                     if ((player.getPosition()[1] + 2) > 16) {
-                   
-                        JOptionPane.showMessageDialog(null, "Movimiento no válido, sale del tablero.", "movimiento no valido",
+
+                        JOptionPane.showMessageDialog(null, "Movimiento no válido, sale del tablero.",
+                                "movimiento no valido",
                                 JOptionPane.ERROR_MESSAGE);
                         return false;
                     }
@@ -102,12 +102,15 @@ public class Funciones {
 
                     table.tablero[player.getPosition()[0]][player
                             .getPosition()[1]] = " ";
-                    table2.boxes[player.getPosition()[0]][player
-                            .getPosition()[1]].setBackground(Color.BLACK);
+                    if (table2.boxes[player.getPosition()[0]][player
+                            .getPosition()[1]].getBackground().getRGB() == player.getColor()) {
+                        table2.boxes[player.getPosition()[0]][player
+                                .getPosition()[1]].setBackground(Color.black);
+                    }
 
                     player.moveRight();
                     table2.boxes[player.getPosition()[0]][player
-                            .getPosition()[1]].setBackground(Color.decode(player.getColor()));
+                            .getPosition()[1]].setBackground(new Color((player.getColor())));
                     table.agregarPosicionPeon(player.getPosition()[0],
                             player.getPosition()[1], player.getId());
 
@@ -116,7 +119,8 @@ public class Funciones {
                 case 4:
                     if ((player.getPosition()[1] - 2) < 0) {
                         System.out.println(player.getPosition()[1] - 2);
-                        JOptionPane.showMessageDialog(null, "Movimiento no válido, sale del tablero.", "movimiento no valido",
+                        JOptionPane.showMessageDialog(null, "Movimiento no válido, sale del tablero.",
+                                "movimiento no valido",
                                 JOptionPane.ERROR_MESSAGE);
                         return false;
                     }
@@ -130,12 +134,15 @@ public class Funciones {
 
                     table.tablero[player.getPosition()[0]][player
                             .getPosition()[1]] = " ";
-                    table2.boxes[player.getPosition()[0]][player
-                            .getPosition()[1]].setBackground(Color.BLACK);
+                    if (table2.boxes[player.getPosition()[0]][player
+                            .getPosition()[1]].getBackground().getRGB() == player.getColor()) {
+                        table2.boxes[player.getPosition()[0]][player
+                                .getPosition()[1]].setBackground(Color.black);
+                    }
 
                     player.moveLeft();
                     table2.boxes[player.getPosition()[0]][player
-                            .getPosition()[1]].setBackground(Color.decode(player.getColor()));
+                            .getPosition()[1]].setBackground(new Color((player.getColor())));
                     table.agregarPosicionPeon(player.getPosition()[0],
                             player.getPosition()[1], player.getId());
 
@@ -217,7 +224,7 @@ public class Funciones {
                     pawn.walls -= 1;
 
                     table2.walls[pawn.getIdN()][pawn.walls].setBackground(Color.black);
-                    
+
                     return true;
 
                 case 2:
@@ -291,9 +298,9 @@ public class Funciones {
         name = JOptionPane.showInputDialog("Ingrese nombre del jugador #1");
 
         // Inicializamos el primer player y lo agregaros a la lista de jugadores.
-        Pawn player1 = new Pawn(name, "A", 0, 8, "#ffffff", 0);
+        Pawn player1 = new Pawn(name, "A", 0, 8, -1, 0);
         listaPlayers.add(player1);
-        table2.boxes[0][8].setBackground(Color.RED);
+        table2.boxes[0][8].setBackground(Color.white);
 
         // Actualizamos la posici�n del player en el tablero.
         table.agregarPosicionPeon(listaPlayers.get(0).getPosition()[0], listaPlayers.get(0).getPosition()[1],
@@ -301,9 +308,9 @@ public class Funciones {
 
         name = JOptionPane.showInputDialog("Ingrese nombre del jugador #2");
 
-        Pawn player2 = new Pawn(name, "B", 16, 8, "#ff0000", 1);
+        Pawn player2 = new Pawn(name, "B", 16, 8, -65536, 1);
         listaPlayers.add(player2);
-        table2.boxes[16][8].setBackground(Color.BLUE);
+        table2.boxes[16][8].setBackground(Color.RED);
         table.agregarPosicionPeon(listaPlayers.get(1).getPosition()[0], listaPlayers.get(1).getPosition()[1],
                 listaPlayers.get(1).getId());
 
@@ -313,7 +320,7 @@ public class Funciones {
         if (listaPlayers.get(0).getPosition()[0] == 16) {
             JOptionPane.showMessageDialog(null, "Felicidades " + listaPlayers.get(0).getName() + ", haz ganado.",
                     "mensaje de acierto", 1);
-           table2.destroyGame();
+            table2.destroyGame();
             return true;
         }
 
