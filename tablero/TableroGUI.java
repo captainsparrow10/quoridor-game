@@ -1,21 +1,16 @@
 package tablero;
 
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 import estructura.Funciones;
 
-public class TableroGUI extends JFrame implements ActionListener {
+public class TableroGUI extends JFrame{
     private static int boxSize = 50;
     public static int[] actualBox = new int[2];
     public final JButton[][] boxes = new JButton[17][17];
     public final JButton[][] walls = new JButton[2][10];
     int a = 0;
-    int b = 0;
-    private JButton startButton;
-    private JButton finishButton;
-    private JButton moveButton;
-    private JButton putWallButton;
+    int b = 0;;
     JPanel leftPanel;
     Font font = new Font("Arial", Font.BOLD, 15);
     Funciones func = new Funciones();
@@ -26,7 +21,6 @@ public class TableroGUI extends JFrame implements ActionListener {
 
         // Panel de opciones.
         // Todavía no tiene función las opciones.
-
 
         // Panel del botón
         JPanel buttonPanel = new JPanel();
@@ -39,10 +33,18 @@ public class TableroGUI extends JFrame implements ActionListener {
                 c.gridx = j;
                 c.weightx = 0.5;
                 JButton box = new JButton();
-                box.setActionCommand((i + 1) + "-" + (j + 1));
                 box.setFont(font);
-                box.setForeground(Color.WHITE);
+                box.setForeground(Color.white);
                 box.setMargin(new Insets(1, 1, 1, 1));
+
+                if ((i == 0 && (j >= 2 && j <= 18)) && j % 2 == 0) {
+                    box.setText((j - 1) + "");
+                }
+
+                if((j == 0 && (i >= 1 && i <= 17)) && i % 2 != 0){
+                    box.setText((i) + "");
+                }
+
                 if (i == 0 || i == 18) {
                     if (j % 2 == 0) {
                         box.setPreferredSize(new Dimension(boxSize, boxSize));
@@ -50,14 +52,12 @@ public class TableroGUI extends JFrame implements ActionListener {
 
                     } else {
                         c.fill = GridBagConstraints.VERTICAL;
-                        box.setPreferredSize(new Dimension(5, 5));
+                        box.setPreferredSize(new Dimension(12, 12));
                         box.setBackground(Color.yellow);
-                        if ( b == 10) {
+                        if (b == 10) {
                             a = 1;
                             b = 0;
                         }
-
-              
 
                         walls[a][b] = box;
                         b++;
@@ -77,15 +77,15 @@ public class TableroGUI extends JFrame implements ActionListener {
 
                         } else {
                             c.fill = GridBagConstraints.VERTICAL;
-                            box.setPreferredSize(new Dimension(5, 5));
+                            box.setPreferredSize(new Dimension(12, 12));
                             box.setBackground(Color.gray);
                         }
                     } else {
-                        box.setPreferredSize(new Dimension(5, 5));
+                        box.setPreferredSize(new Dimension(12, 12));
                         box.setBackground(Color.gray);
                     }
                 }
-                box.addActionListener(this);
+
                 buttonPanel.add(box, c);
                 if (i > 0 && i < 18) {
                     if (j > 1 && j < 19) {
@@ -109,66 +109,9 @@ public class TableroGUI extends JFrame implements ActionListener {
 
     }
 
-    public void createOption() {
-
-        leftPanel = new JPanel();
-
-        startButton = new JButton();
-        startButton.setText("Iniciar");
-        startButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ae) {
-
-            }
-        });
-
-        moveButton = new JButton();
-        moveButton.setText("Mover");
-        moveButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ae) {
-
-            }
-        });
-
-        putWallButton = new JButton();
-        putWallButton.setText("Colocar muro");
-        putWallButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ae) {
-
-            }
-        });
-
-        finishButton = new JButton();
-        finishButton.setText("Terminar");
-        finishButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ae) {
-
-            }
-        });
-
-        leftPanel.add(startButton);
-        leftPanel.add(finishButton);
-        leftPanel.add(moveButton);
-        leftPanel.add(putWallButton);
-
-        leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
-    }
-
     // Todavía no tiene uso, probablemente lo utilizaremos para cuando el control
     // sea mediante clicks a las casillas.
-    @Override
-    public void actionPerformed(ActionEvent e) {
 
-        // for (int i = 0; i < gridSize; i++) {
-        // for (int j = 0; j < gridSize; j++) {
-        // if (e.getSource() == boxes[i][j]) {
-        // actualBox[0] = i + 1;
-        // actualBox[1] = j + 1;
-        // }
-
-        // }
-        // }
-
-    }
 
     public void destroyGame() {
         this.dispose(); // Destroy the JFrame object
