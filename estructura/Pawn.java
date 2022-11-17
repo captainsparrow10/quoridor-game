@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 //Clase peones
 public class Pawn {
     String name;
-    String color;
+    int color;
     String id;
     int idN;
     public int walls = 10;
@@ -15,7 +15,7 @@ public class Pawn {
     // https://www.educba.com/2d-arraylist-in-java/
     ArrayList<ArrayList<Integer>> posiciones = new ArrayList<ArrayList<Integer>>();
 
-    public Pawn(String name, String id, int px, int py, String color, int idN) {
+    public Pawn(String name, String id, int px, int py, int color, int idN) {
         this.color = color;
         this.name = name;
         this.id = id;
@@ -89,7 +89,7 @@ public class Pawn {
         return this.name;
     }
 
-    public String getColor() {
+    public int getColor() {
         return this.color;
     }
 
