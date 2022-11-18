@@ -1,18 +1,18 @@
 # Tablero Quoridor
 
-![](https://media.discordapp.net/attachments/718180378535395490/1043252136089239603/image.png)
+[Quoridor tablero](Imagenes/Tablero.png)
 
 ## ¿Cómo ubicarse en el tablero?
 
 El tablero se controla mediante un sistema de coordenadas que se divide en:
 
 ### Filas.
-![](https://media.discordapp.net/attachments/718180378535395490/1043273660653387816/image.png)
+[Horizontal](Imagenes/horizontal.png)
 
 Se cuentan de izquierda hacia la derecha.
 
 ### Columnas.
-![](https://media.discordapp.net/attachments/718180378535395490/1043253832911699978/image.png)
+[Vertical](Imagenes/vertical.png)
 
 Se cuenta de arriba hacia abajo. 
 
@@ -21,7 +21,7 @@ Se cuenta de arriba hacia abajo.
 
 
 ### Ejemplo #1: Colocar muro horizontal en la posición color rojo.
-![](https://media.discordapp.net/attachments/718180378535395490/1043274105312522331/image.png)
+[Ejemplo1](Imagenes/p1.png)
 
 * Paso #1: Elegimos la posición donde queremos colocar la primera parte del muro, empezando por la fila, en este caso sería la fila número 2, debido a que está entre el 1 y el 3,  y la columna número 1 ya en esa columna está el espacio del muro.
 
@@ -30,11 +30,11 @@ Se cuenta de arriba hacia abajo.
 
 * Resultado final.
 
-![](https://media.discordapp.net/attachments/718180378535395490/1043275955935924297/image.png)
+[Ej1Resultado](Imagenes/r1.png))
 
 ### Ejemplo #2: Colocar muro vertical en la posición color rojo.
 
-![](https://media.discordapp.net/attachments/718180378535395490/1043274394908233829/image.png)
+[Ejemplo2](Imagenes/p2.png)
 
 * Paso #1: Elegimos la posición donde queremos colocar la primera parte del muro, empezando por la fila, en este caso sería la fila número 1, debido a que está entre el 1 y el 3, y la columna número 1 ya en esa columna está el espacio del muro.
 
@@ -42,7 +42,7 @@ Se cuenta de arriba hacia abajo.
 
 * Resultado final.
 
-![](https://media.discordapp.net/attachments/718180378535395490/1043276959565742110/image.png)
+[Ej2Resultado](Imagenes/r2.png)
 
 
 
