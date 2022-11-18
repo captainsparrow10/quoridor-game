@@ -1,18 +1,18 @@
 # Tablero Quoridor
 
-[Quoridor tablero](Imagenes/Tablero.png)
+![Quoridor tablero](Imagenes/Tablero.png)
 
 ## ¿Cómo ubicarse en el tablero?
 
 El tablero se controla mediante un sistema de coordenadas que se divide en:
 
 ### Filas.
-[Horizontal](Imagenes/horizontal.png)
+![Horizontal](Imagenes/horizontal.png)
 
 Se cuentan de izquierda hacia la derecha.
 
 ### Columnas.
-[Vertical](Imagenes/vertical.png)
+![Vertical](Imagenes/vertical.png)
 
 Se cuenta de arriba hacia abajo. 
 
@@ -21,7 +21,7 @@ Se cuenta de arriba hacia abajo.
 
 
 ### Ejemplo #1: Colocar muro horizontal en la posición color rojo.
-[Ejemplo1](Imagenes/p1.png)
+![Ejemplo1](Imagenes/p1.png)
 
 * Paso #1: Elegimos la posición donde queremos colocar la primera parte del muro, empezando por la fila, en este caso sería la fila número 2, debido a que está entre el 1 y el 3,  y la columna número 1 ya en esa columna está el espacio del muro.
 
@@ -30,11 +30,11 @@ Se cuenta de arriba hacia abajo.
 
 * Resultado final.
 
-[Ej1Resultado](Imagenes/r1.png))
+![Ej1Resultado](Imagenes/r1.png))
 
 ### Ejemplo #2: Colocar muro vertical en la posición color rojo.
 
-[Ejemplo2](Imagenes/p2.png)
+![Ejemplo2](Imagenes/p2.png)
 
 * Paso #1: Elegimos la posición donde queremos colocar la primera parte del muro, empezando por la fila, en este caso sería la fila número 1, debido a que está entre el 1 y el 3, y la columna número 1 ya en esa columna está el espacio del muro.
 
@@ -42,7 +42,7 @@ Se cuenta de arriba hacia abajo.
 
 * Resultado final.
 
-[Ej2Resultado](Imagenes/r2.png)
+![Ej2Resultado](Imagenes/r2.png)
 
 
 
