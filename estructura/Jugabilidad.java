@@ -41,6 +41,7 @@ public class Jugabilidad {
           JOptionPane.showMessageDialog(null, "Caracter no valido", "mensaje de error.", JOptionPane.ERROR_MESSAGE);
         }
 
+        //Switch para elegir entre moverse y colocar muro.
         switch (option) {
           case 1:
             endOption = funct.movilidadPeon(listaPlayers.get(playerActual), table, table2);
@@ -59,7 +60,7 @@ public class Jugabilidad {
             break;
         }
 
-        // Wincodition
+        // Aquí se verifica si uno de los dos jugadores a ganado.
         end = funct.jugadorGanador(listaPlayers, table2);
         if(end == true){
           funct.salirJuego(listaPlayers.get(0), listaPlayers.get(1), table, table2);

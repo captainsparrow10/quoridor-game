@@ -15,6 +15,8 @@ public class Pawn {
     // https://www.educba.com/2d-arraylist-in-java/
     ArrayList<ArrayList<Integer>> posiciones = new ArrayList<ArrayList<Integer>>();
 
+    // Constructo del peón, le asginamos su nombre, su id, sus posiciones, su color,
+    // y su IDnumber.
     public Pawn(String name, String id, int px, int py, int color, int idN) {
         this.color = color;
         this.name = name;
@@ -25,32 +27,36 @@ public class Pawn {
         this.posiciones.get(this.counter).add(1, py);
     }
 
+    // Movimiento hacia arriba.
     public void moveRight() {
         this.counter++;
         this.posiciones.add(new ArrayList<Integer>());
         this.posiciones.get(this.counter).add(0, posiciones.get(this.counter - 1).get(0));
-        this.posiciones.get(this.counter).add(1, posiciones.get(this.counter - 1).get(1) + 2);  
+        this.posiciones.get(this.counter).add(1, posiciones.get(this.counter - 1).get(1) + 2);
     }
 
+    // Movimiento hacia abajo.
     public void moveLeft() {
         this.counter++;
         this.posiciones.add(new ArrayList<Integer>());
         this.posiciones.get(this.counter).add(0, posiciones.get(this.counter - 1).get(0));
-        this.posiciones.get(this.counter).add(1, posiciones.get(this.counter - 1).get(1) - 2);    
+        this.posiciones.get(this.counter).add(1, posiciones.get(this.counter - 1).get(1) - 2);
     }
 
+    // Movimiento hacia arriba.
     public void moveUp() {
         this.counter++;
         this.posiciones.add(new ArrayList<Integer>());
         this.posiciones.get(this.counter).add(0, posiciones.get(this.counter - 1).get(0) - 2);
-        this.posiciones.get(this.counter).add(1, posiciones.get(this.counter - 1).get(1));   
+        this.posiciones.get(this.counter).add(1, posiciones.get(this.counter - 1).get(1));
     }
 
+    // Movimiento hacia abajo.
     public void moveDown() {
         this.counter++;
         this.posiciones.add(new ArrayList<Integer>());
         this.posiciones.get(this.counter).add(0, posiciones.get(this.counter - 1).get(0) + 2);
-        this.posiciones.get(this.counter).add(1, posiciones.get(this.counter - 1).get(1));   
+        this.posiciones.get(this.counter).add(1, posiciones.get(this.counter - 1).get(1));
     }
 
     // Función para obtener la posición del peón, para luego mostrarla.
@@ -59,15 +65,22 @@ public class Pawn {
         return posicion;
     }
 
-    public void obtenerHistorial(){
+    // Función para obtener el historial de los peones, escribimos un mensaje con ambos recorridos.
+    public void obtenerHistorial() {
         String message = "";
         message += "Recorrido de " + this.name + "\n" + "Walls: " + this.walls + "\n";
-        for(int i = 0; i < posiciones.size(); i++){
-          message +=  "Turno número " + (i+1) + " de " + this.name + ":\n" + "X: " + posiciones.get(i).get(0) + "   Y: " + posiciones.get(i).get(1) + "\n";
+        for (int i = 0; i < posiciones.size(); i++) {
+
+            if(i == 0){
+                message += "Posición inicial. X: " + posiciones.get(i).get(0) + " Y: "+ posiciones.get(i).get(1) + "\n";
+                continue;
+            }
+
+            message += "Turno número " + (i) + " de " + this.name + ":\n" + "X: " + posiciones.get(i).get(0)
+                    + "   Y: " + posiciones.get(i).get(1) + "\n";
         }
         JOptionPane.showMessageDialog(null, message, "a", 1);
-        
-        
+
     }
 
     // Funciones para obtener y actualizar la cantidad de walls del peón. (Jugador)
@@ -75,20 +88,22 @@ public class Pawn {
         return walls;
     }
 
-    // Función para obtener y mostrar el id
+    // Función para obtener y mostrar el id.
 
     public String getId() {
         return this.id;
     }
 
-    public int getIdN(){
+    public int getIdN() {
         return this.idN;
     }
 
+    //Función para obtener el nombre.
     public String getName() {
         return this.name;
     }
 
+    //Función para obtener el color.
     public int getColor() {
         return this.color;
     }

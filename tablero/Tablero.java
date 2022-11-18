@@ -4,6 +4,7 @@ public class Tablero {
   public String[][] tablero = new String[17][17];
 
 
+  //Función para llenar el tablero intenro.
   public void llenartablero() {
     // Coordenadas en Y
     
