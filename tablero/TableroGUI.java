@@ -5,6 +5,7 @@ import javax.swing.*;
 import estructura.Funciones;
 
 public class TableroGUI extends JFrame{
+     //Declaración del tablero en GUI
     private static int boxSize = 50;
     public static int[] actualBox = new int[2];
     public final JButton[][] boxes = new JButton[17][17];
@@ -17,6 +18,7 @@ public class TableroGUI extends JFrame{
     Font font = new Font("Arial", Font.BOLD, 15);
     Funciones func = new Funciones();
 
+    //Función  para crear y desplegar el tablero en GUI
     public void createAndDisplayGUI() {
 
         //Creamos el panel principal.
@@ -85,7 +87,9 @@ public class TableroGUI extends JFrame{
                         c.fill = GridBagConstraints.HORIZONTAL;
                         if (j % 2 == 0) {
                             if (j == 0 || j == 20) {
+                                //funciones para dar tamaño  a las casillas
                                 box.setPreferredSize(new Dimension(boxSize, boxSize));
+                                //Funciones para colorear casillas
                                 box.setBackground(Color.gray);
                             } else {
                                 box.setPreferredSize(new Dimension(boxSize, boxSize));
