@@ -59,6 +59,15 @@ public class Pawn {
         this.posiciones.get(this.counter).add(1, posiciones.get(this.counter - 1).get(1));
     }
 
+    
+    //Método para saltar el turno en el cual se agregó un muro.
+    public void actualizarHistorial(){
+        this.counter++;
+        this.posiciones.add(new ArrayList<Integer>());
+        this.posiciones.get(this.counter).add(0, posiciones.get(this.counter - 1).get(0));
+        this.posiciones.get(this.counter).add(1, posiciones.get(this.counter - 1).get(1));
+    }
+
     // Función para obtener la posición del peón, para luego mostrarla.
     public int[] getPosition() {
         int posicion[] = { this.posiciones.get(this.counter).get(0), this.posiciones.get(this.counter).get(1) };
