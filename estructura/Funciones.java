@@ -273,7 +273,7 @@ public class Funciones {
                         }
                     }
                     pawn.walls -= 1;
-
+                    pawn.actualizarHistorial();
                     table2.walls[pawn.getIdN()][pawn.walls].setBackground(Color.black);
 
                     return true;
@@ -327,6 +327,7 @@ public class Funciones {
                         }
                     }
                     pawn.walls -= 1;
+                    pawn.actualizarHistorial();
                     table2.walls[pawn.getIdN()][pawn.walls].setBackground(Color.black);
                     return true;
 
