@@ -7,10 +7,12 @@ import tablero.TableroGUI;
 //Clase walls
 public class Wall {
 
+    //Función para colocar valla horizontal.
     public Boolean colocarVallaHorizontal(int x, int y1, int y2, int y3, String[][] tablero, int walls,
             TableroGUI table2) {
         if (walls > 0) {
 
+            //Ciclo para agregar en el tablero interno los muros.
             if (tablero[x][y3] == "x" && tablero[x][y2] == "x" && tablero[x][y1] == "x") {
                 tablero[x][y1] = "v";
                 tablero[x][y2] = "v";
@@ -24,6 +26,7 @@ public class Wall {
                 }
                 y0 = y1 - 1;
                 y4 = y2 + 1;
+
                 if (y0 > -1 && y0 < 17) {
 
                     if (tablero[x][y0] == "x" && tablero[x][y0 - 1] == "v"
@@ -45,6 +48,8 @@ public class Wall {
 
                 }
 
+
+                //Pintamos los muros en el tablero GUI.
                 table2.boxes[x][y1].setBackground(Color.yellow);
                 table2.boxes[x][y2].setBackground(Color.yellow);
                 table2.boxes[x][y3].setBackground(Color.yellow);
@@ -64,9 +69,13 @@ public class Wall {
         }
     }
 
+
+    //Función para colocar una vertical.
     public Boolean colocarVallaVertical(int y, int x1, int x2, int x3, String[][] tablero, int walls,
             TableroGUI table2) {
         if (walls > 0) {
+
+            //Aquí se rellena el tablero
             if (tablero[x3][y] == "x" && tablero[x2][y] == "x" && tablero[x1][y] == "x") {
                 tablero[x1][y] = "v";
                 tablero[x2][y] = "v";
@@ -80,6 +89,8 @@ public class Wall {
                 }
                 x0 = x1 - 1;
                 x4 = x2 + 1;
+
+                
                 if (x0 > -1 && x0 < 17) {
                     if (tablero[x0][y] == "x" && tablero[x0 - 1][y] == "v"
                             || tablero[x0][y] == "x" && tablero[x0][y - 1] == "v"
@@ -99,6 +110,8 @@ public class Wall {
                     }
                 }
 
+
+                //Aquí pintamos los muros de amarillo
                 table2.boxes[x1][y].setBackground(Color.yellow);
                 table2.boxes[x2][y].setBackground(Color.yellow);
                 table2.boxes[x3][y].setBackground(Color.yellow);

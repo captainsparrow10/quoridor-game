@@ -12,39 +12,44 @@ public class Funciones {
         try {
 
             option = Integer.parseInt(JOptionPane.showInputDialog(null,
-                    "�Hacia qu� direcci�n desea moverse?\nOpci�n 1: Hacia arriba.\nOpci�n 2: Hacia abajo.\nOpci�n 3: Hacia la derecha.\nOpci�n 4: Hacia la izquierda.\nOpci�n 5: Volver.",
+                    "Hacia quo direccion desea moverse?\nOpcion 1: Hacia arriba.\nOpcion 2: Hacia abajo.\nOpcion 3: Hacia la derecha.\nOpcion 4: Hacia la izquierda.\nOpcion 5: Volver.",
                     "\nTurno de: " + player.getName() + ".", JOptionPane.INFORMATION_MESSAGE));
             switch (option) {
                 case 1:
 
+                    //Validamos que el movimiento hacia esa dirrección esté dentro del rango del tablero.
                     if ((player.getPosition()[0] - 2) < 0) {
-                        JOptionPane.showMessageDialog(null, "Movimiento no válido, sale del tablero.",
+                        JOptionPane.showMessageDialog(null, "Movimiento no valido, sale del tablero.",
                                 "movimiento no valido",
                                 JOptionPane.ERROR_MESSAGE);
                         return false;
                     }
+
+                    //Validamos en caso de que haya una vaya en ese sitio.
                     if (table.tablero[player.getPosition()[0] - 1][player
                             .getPosition()[1]] == "v") {
 
-                        JOptionPane.showMessageDialog(null, "Hay una vaya aquí, prueba en otro lugar", "a",
+                        JOptionPane.showMessageDialog(null, "Hay una vaya aqui, prueba en otro lugar", "a",
                                 JOptionPane.ERROR_MESSAGE);
                         return false;
                     }
 
-                    // Eliminamos la posici�n del pe�n actual en el tablero.
+                    // Eliminamos la posicion del peon actual en el tablero.
                     table.tablero[player.getPosition()[0]][player
                             .getPosition()[1]] = " ";
 
+                    
+                    // Validacion en caso de que un peon esté encima de otro, no borrar el color actual al moverse el que esté debajo.
                     if (table2.boxes[player.getPosition()[0]][player
                             .getPosition()[1]].getBackground().getRGB() == player.getColor()) {
                         table2.boxes[player.getPosition()[0]][player
                                 .getPosition()[1]].setBackground(Color.black);
                     }
 
-                    // Actualizamos la nueva posici�n del jugador.
+                    // Actualizamos la nueva posicion del jugador.
                     player.moveUp();
 
-                    // Actualizamos la nueva posici�n del pe�n en la tabla.
+                    // Actualizamos la nueva posicion del peon en la tabla.
                     table.agregarPosicionPeon(player.getPosition()[0],
                             player.getPosition()[1], player.getId());
 
@@ -57,7 +62,7 @@ public class Funciones {
                 case 2:
 
                     if ((player.getPosition()[0] + 2) > 16) {
-                        JOptionPane.showMessageDialog(null, "Movimiento no válido, sale del tablero.",
+                        JOptionPane.showMessageDialog(null, "Movimiento no valido, sale del tablero.",
                                 "movimiento no valido",
                                 JOptionPane.ERROR_MESSAGE);
                         return false;
@@ -65,7 +70,7 @@ public class Funciones {
 
                     if (table.tablero[player.getPosition()[0] + 1][player
                             .getPosition()[1]] == "v") {
-                        JOptionPane.showMessageDialog(null, "Hay una vaya aquí, prueba en otro lugar", "a",
+                        JOptionPane.showMessageDialog(null, "Hay una vaya aqui, prueba en otro lugar", "a",
                                 JOptionPane.ERROR_MESSAGE);
                         return false;
                     }
@@ -88,14 +93,14 @@ public class Funciones {
 
                     if ((player.getPosition()[1] + 2) > 16) {
 
-                        JOptionPane.showMessageDialog(null, "Movimiento no válido, sale del tablero.",
+                        JOptionPane.showMessageDialog(null, "Movimiento no valido, sale del tablero.",
                                 "movimiento no valido",
                                 JOptionPane.ERROR_MESSAGE);
                         return false;
                     }
                     if (table.tablero[player.getPosition()[0]][player
                             .getPosition()[1] + 1] == "v") {
-                        JOptionPane.showMessageDialog(null, "Hay una vaya aquí, prueba en otro lugar", "a",
+                        JOptionPane.showMessageDialog(null, "Hay una vaya aqui, prueba en otro lugar", "a",
                                 JOptionPane.ERROR_MESSAGE);
                         return false;
                     }
@@ -119,7 +124,7 @@ public class Funciones {
                 case 4:
                     if ((player.getPosition()[1] - 2) < 0) {
                         System.out.println(player.getPosition()[1] - 2);
-                        JOptionPane.showMessageDialog(null, "Movimiento no válido, sale del tablero.",
+                        JOptionPane.showMessageDialog(null, "Movimiento no valido, sale del tablero.",
                                 "movimiento no valido",
                                 JOptionPane.ERROR_MESSAGE);
                         return false;
@@ -127,7 +132,7 @@ public class Funciones {
 
                     if (table.tablero[player.getPosition()[0]][player
                             .getPosition()[1] - 1] == "v") {
-                        JOptionPane.showMessageDialog(null, "Hay una vaya aquí, prueba en otro lugar", "a",
+                        JOptionPane.showMessageDialog(null, "Hay una vaya aqui, prueba en otro lugar", "a",
                                 JOptionPane.ERROR_MESSAGE);
                         return false;
                     }
@@ -171,15 +176,19 @@ public class Funciones {
 
         try {
             option = Integer.parseInt(JOptionPane
-                    .showInputDialog("Opci�n 1: Muro horizontal.\nOpci�n 2: Muro vertical.\nOpci�n 3: Volver."));
+                    .showInputDialog("Opcion 1: Muro horizontal.\nOpcion 2: Muro vertical.\nOpcion 3: Volver."));
 
             switch (option) {
                 case 1:
+
+                
                     positionX = Integer.parseInt(JOptionPane.showInputDialog(
-                            "Eliga el n�mero de 'fila' donde desea colocar el muro")) - 1;
+                            "Eliga el numero de 'fila' donde desea colocar el muro")) - 1;
 
                     positionY = Integer.parseInt(JOptionPane.showInputDialog(
-                            "Eliga el n�mero de 'columna' donde desea colocar el muro")) - 1;
+                            "Eliga el numero de 'columna' donde desea colocar el muro")) - 1;
+
+                            //Validamos que la posición introducida sea válida, que sea un muro horizontal
 
                     if ((positionX + 1) % 2 != 0 || (positionY + 1) % 2 == 0) {
 
@@ -189,7 +198,7 @@ public class Funciones {
 
                     option = Integer.parseInt(JOptionPane
                             .showInputDialog(
-                                    "�Hacia qui�n lado desea extender el muro?\nOpci�n 1: Izquierda.\nOpci�n 2: Derecha.\nOpci�n 3: Volver."));
+                                    "Hacia quion lado desea extender el muro?\nOpcion 1: Izquierda.\nOpcion 2: Derecha.\nOpcion 3: Volver."));
 
                     if (option != 1 && option != 2) {
 
@@ -204,7 +213,7 @@ public class Funciones {
                     if (option == 1) {
 
                         // Guardamos la respuesta (true o false) para ver si es posible colocar una
-                        // valla ah�.
+                        // valla ahi.
                         responseWalls = walls.colocarVallaHorizontal(positionX, positionY, positionY - 2, positionY - 1,
                                 table.tablero,
                                 pawn.walls, table2);
@@ -229,10 +238,10 @@ public class Funciones {
 
                 case 2:
                     positionX = Integer.parseInt(JOptionPane.showInputDialog(
-                            "Eliga el n�mero de 'fila' donde desea colocar el muro")) - 1;
+                            "Eliga el nomero de 'fila' donde desea colocar el muro")) - 1;
 
                     positionY = Integer.parseInt(JOptionPane.showInputDialog(
-                            "Eliga el n�mero de 'columna' donde desea colocar el muro")) - 1;
+                            "Eliga el nomero de 'columna' donde desea colocar el muro")) - 1;
 
                     if ((positionX + 1) % 2 == 0 || (positionY + 1) % 2 != 0) {
                         JOptionPane.showMessageDialog(null, "Fila o Columna no valida", "a", JOptionPane.ERROR_MESSAGE);
@@ -240,7 +249,7 @@ public class Funciones {
                     }
 
                     option = Integer.parseInt(JOptionPane.showInputDialog(
-                            "�Hacia qui�n lado desea extender el muro?\nOpci�n 1: Arriba.\nOpci�n 2: Abajo.\nOpci�n 3: Volver."));
+                            "Hacia quion lado desea extender el muro?\nOpcion 1: Arriba.\nOpcion 2: Abajo.\nOpcion 3: Volver."));
                     if (option != 1 && option != 2) {
 
                         if (option == 3) {
@@ -276,12 +285,14 @@ public class Funciones {
 
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Ha introcido algún valor inválido, intente nuevamente", "a",
+            JOptionPane.showMessageDialog(null, "Ha introcido algún valor invalido, intente nuevamente", "a",
                     JOptionPane.ERROR_MESSAGE);
             return false;
         }
     }
 
+
+    //Metodo para salir del juego.
     public void salirJuego(Pawn pawn1, Pawn pawn2, Tablero table, TableroGUI table2) {
         JOptionPane.showMessageDialog(null, "Saliendo del juego.", "a", 1);
         pawn1.obtenerHistorial();
@@ -290,6 +301,8 @@ public class Funciones {
 
     }
 
+
+    //Metodo para iniciar jugadores.
     public void iniciarJugadores(Tablero table, ArrayList<Pawn> listaPlayers, TableroGUI table2) {
         String name;
         table.llenartablero();
@@ -302,7 +315,7 @@ public class Funciones {
         listaPlayers.add(player1);
         table2.boxes[0][8].setBackground(Color.white);
 
-        // Actualizamos la posici�n del player en el tablero.
+        // Actualizamos la posicion del player en el tablero.
         table.agregarPosicionPeon(listaPlayers.get(0).getPosition()[0], listaPlayers.get(0).getPosition()[1],
                 listaPlayers.get(0).getId());
 
@@ -316,6 +329,8 @@ public class Funciones {
 
     }
 
+
+    //Metodo para el jugador ganador.
     public Boolean jugadorGanador(ArrayList<Pawn> listaPlayers, TableroGUI table2) {
         if (listaPlayers.get(0).getPosition()[0] == 16) {
             JOptionPane.showMessageDialog(null, "Felicidades " + listaPlayers.get(0).getName() + ", haz ganado.",
