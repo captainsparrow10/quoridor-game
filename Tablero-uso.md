@@ -7,7 +7,7 @@
 El tablero se controla mediante un sistema de coordenadas que se divide en:
 
 ### Filas.
-[](https://cdn.discordapp.com/attachments/718180378535395490/1043253832911699978/image.png)
+![](https://cdn.discordapp.com/attachments/718180378535395490/1043253832911699978/image.png)
 
 Se cuentan de izquierda hacia la derecha.
 
