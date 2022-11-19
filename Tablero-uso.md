@@ -21,7 +21,7 @@ Se cuenta de arriba hacia abajo.
 
 
 ### Ejemplo #1: Colocar muro horizontal en la posición color rojo.
-![](https://cdn.discordapp.com/attachments/718180378535395490/1043275955935924297/image.png)
+![](https://cdn.discordapp.com/attachments/718180378535395490/1043274105312522331/image.png)
 
 * Paso #1: Elegimos la posición donde queremos colocar la primera parte del muro, empezando por la fila, en este caso sería la fila número 2, debido a que está entre el 1 y el 3,  y la columna número 1 ya en esa columna está el espacio del muro.
 
