@@ -1,13 +1,13 @@
 # Tablero Quoridor
 
-![](https://cdn.discordapp.com/attachments/718180378535395490/1043273660653387816/image.png)
+![](https://cdn.discordapp.com/attachments/718180378535395490/1043252136089239603/image.png)
 
 ## ¿Cómo ubicarse en el tablero?
 
 El tablero se controla mediante un sistema de coordenadas que se divide en:
 
 ### Filas.
-![](https://cdn.discordapp.com/attachments/718180378535395490/1043253832911699978/image.png)
+![](https://cdn.discordapp.com/attachments/718180378535395490/1043273660653387816/image.png)
 
 Se cuentan de izquierda hacia la derecha.
 
