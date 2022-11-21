@@ -21,6 +21,5 @@ El jugador iniciara con una opcion cada turno:
 
 # Bibliografia
 [Quoridor](https://www.ultraboardgames.com/quoridor/game-rules.php)<br/>
-[Como hacer un readme](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)<br/>
-[Para acordarse de como poner algo en el readme](https://markdown.es/sintaxis-markdown/)<br/>
+[ReadMe](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)<br/>
 [Notion](https://incredible-paprika-7a4.notion.site/Proyecto-final-de-desarrollo-77b7fbf152214fd192853cc9cc119921)
