@@ -1,7 +1,8 @@
-package consola.estructura;
+package estructura;
 
 import java.util.Scanner;
-import consola.tablero.Tablero;
+
+import tablero.Tablero;
 
 import java.util.ArrayList;
 

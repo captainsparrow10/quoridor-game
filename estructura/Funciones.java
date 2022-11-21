@@ -1,7 +1,8 @@
-package consola.estructura;
+package estructura;
 import java.util.ArrayList;
 import java.util.Scanner;
-import consola.tablero.Tablero;
+
+import tablero.Tablero;
 
 public class Funciones {
     Scanner sc = new Scanner(System.in);

@@ -1,4 +1,4 @@
-package consola.estructura;
+package estructura;
 
 import java.util.ArrayList;
 

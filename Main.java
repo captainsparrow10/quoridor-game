@@ -1,5 +1,5 @@
-package consola;
-import consola.estructura.Jugabilidad;
+
+import estructura.Jugabilidad;
 
 public class Main {
 
