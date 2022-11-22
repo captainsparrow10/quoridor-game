@@ -35,11 +35,11 @@ public class Jugabilidad {
       endOption = false;
       while (!endOption) {
         try{
-          System.out.println("Opci�n 1: Moverse.\nOpci�n 2: Colocar muro.\nOpción 3: Salir del juego.");
+          System.out.println("Opcion 1: Moverse.\nOpcion 2: Colocar muro.\nOpcion 3: Salir del juego.");
           option = Integer.parseInt(sc.nextLine());
         }
         catch(Exception e){
-          System.out.println("Ha introcido algún valor inválido, intente nuevamente");
+          System.out.println("Ha introcido algun valor invalido, intente nuevamente");
         }
 
       
@@ -56,7 +56,7 @@ public class Jugabilidad {
             return;
 
           default:
-            System.out.println("Opci�n no v�lida");
+            System.out.println("Opcion no valida");
             break;
         }
 
