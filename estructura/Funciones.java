@@ -14,7 +14,7 @@ public class Funciones {
 
         
             System.out.println(
-                "�Hacia qu� direcci�n desea moverse?\nOpci�n 1: Hacia arriba.\nOpci�n 2: Hacia abajo.\nOpci�n 3: Hacia la derecha.\nOpci�n 4: Hacia la izquierda.\nOpci�n 5: Volver.");
+                "Hacia que direccion desea moverse?\nOpcion 1: Hacia arriba.\nOpcion 2: Hacia abajo.\nOpcion3: Hacia la derecha.\nOpcio 4: Hacia la izquierda.\nOpcio 5: Volver.");
         
                 option = Integer.parseInt(sc.nextLine());
         
@@ -23,7 +23,7 @@ public class Funciones {
         
                 if (table.tablero[player.getPosition()[1] - 1][player
                     .getPosition()[1]] == "v") {
-                System.out.println("Hay una valla aqu�, prueba en otro lugar.");
+                System.out.println("Hay una valla aqui prueba en otro lugar.");
                 return false;
                 }
         
@@ -44,7 +44,7 @@ public class Funciones {
         
                 if (table.tablero[player.getPosition()[0] + 1][player
                     .getPosition()[1]] == "v") {
-                System.out.println("Hay una valla aqu�, prueba en otro lugar.");
+                System.out.println("Hay una valla aqui prueba en otro lugar.");
                 return false;
                 }
         
@@ -59,7 +59,7 @@ public class Funciones {
             case 3:
                 if (table.tablero[player.getPosition()[0]][player
                     .getPosition()[1] + 1] == "v") {
-                System.out.println("Hay una valla aqu�, prueba en otro lugar.");
+                System.out.println("Hay una valla aqui prueba en otro lugar.");
                 return false;
                 }
         
@@ -74,7 +74,7 @@ public class Funciones {
             case 4:
                 if (table.tablero[player.getPosition()[0]][player
                     .getPosition()[1] - 1] == "v") {
-                System.out.println("Hay una valla aqu�, prueba en otro lugar.");
+                System.out.println("Hay una valla aqui prueba en otro lugar.");
                 return false;
                 }
         
@@ -91,12 +91,12 @@ public class Funciones {
                 return false;
                 
             default:
-                System.out.println("Opci�n inv�lida");
+                System.out.println("Opcio invaida");
                 return false;
             }
         }
         catch(Exception e){
-            System.out.println("Ha introducido algún valor inválido, intente nuevamente");
+            System.out.println("Ha introducido algun valor invaido, intente nuevamente");
             return false;
         }
     
@@ -108,19 +108,19 @@ public class Funciones {
         Wall walls = new Wall();
      
         try{
-        System.out.println("Opci�n 1: Muro horizontal.\nOpci�n 2: Muro vertical.\nOpci�n 3: Volver.");
+        System.out.println("Opcion 1: Muro horizontal.\nOpcion 2: Muro vertical.\nOpcion 3: Volver.");
         option = Integer.parseInt(sc.nextLine());
 
             switch (option) {
                 case 1:
-                    System.out.println("Eliga el n�mero de 'fila' donde desea colocar el muro");
+                    System.out.println("Eliga el numero de 'fila' donde desea colocar el muro");
                     positionX = sc.nextInt() - 1;
 
-                    System.out.println("Eliga el n�mero de 'columna' donde desea colocar el muro");
+                    System.out.println("Eliga el numero de 'columna' donde desea colocar el muro");
                     positionY = sc.nextInt() - 1;
 
                     System.out.println(
-                            "�Hacia qui�n lado desea extender el muro?\nOpci�n 1: Izquierda.\nOpci�n 2: Derecha.\nOpci�n 3: Volver.");
+                            "Hacia que lado desea extender el muro?\nOpcion 1: Izquierda.\nOpcion 2: Derecha.\nOpcion 3: Volver.");
 
                     option = sc.nextInt();
 
@@ -129,7 +129,7 @@ public class Funciones {
                             if (option == 3) {
                                 System.out.println("Regresando...");
                             } else {
-                                System.out.println("Opci�n no v�lida");
+                                System.out.println("Opcion no valida");
                             }
                             return false;
                         }
@@ -158,14 +158,14 @@ public class Funciones {
 
                 case 2:
 
-                    System.out.println("Eliga el n�mero de 'fila' donde desea colocar el muro");
+                    System.out.println("Eliga el numero de 'fila' donde desea colocar el muro");
                     positionX = sc.nextInt() - 1;
 
-                    System.out.println("Eliga el n�mero de 'columna' donde desea colocar el muro");
+                    System.out.println("Eliga el numero de 'columna' donde desea colocar el muro");
                     positionY = sc.nextInt() - 1;
 
                     System.out.println(
-                            "�Hacia qui�n lado desea extender el muro?\nOpci�n 1: Arriba.\nOpci�n 2: Abajo.\nOpci�n 3: Volver.");
+                            "Hacia que lado desea extender el muro?\nOpcion 1: Arriba.\nOpcion 2: Abajo.\nOpcion 3: Volver.");
 
                     option = sc.nextInt();
 
@@ -174,7 +174,7 @@ public class Funciones {
                         if (option == 3) {
                             System.out.println("Regresando...");
                         } else {
-                            System.out.println("Opci�n no v�lida");
+                            System.out.println("Opcion no valida");
                         }
                         return false;
                     }
@@ -196,7 +196,7 @@ public class Funciones {
                     return true;
 
                 default:
-                    System.out.println("Opción inválida");
+                    System.out.println("Opcion invalida");
                     return false;
 
             }
