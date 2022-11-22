@@ -56,7 +56,7 @@ public class Pawn {
     public void obtenerHistorial(){
         System.out.println("Recorrido de " + this.name);
         for(int i = 0; i < posiciones.size(); i++){
-            System.out.println("Turno número " + (i+1) + " de " + this.name + ":");
+            System.out.println("Turno numero " + (i+1) + " de " + this.name + ":");
             System.out.println("X: " + posiciones.get(i).get(0) + "   Y: " + posiciones.get(0).get(1));
         }
         
