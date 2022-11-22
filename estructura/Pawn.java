@@ -85,7 +85,7 @@ public class Pawn {
                 continue;
             }
 
-            message += "Turno número " + (i) + " de " + this.name + ":\n" + "X: " + posiciones.get(i).get(0)
+            message += "Turno numero " + (i) + " de " + this.name + ":\n" + "X: " + posiciones.get(i).get(0)
                     + "   Y: " + posiciones.get(i).get(1) + "\n";
         }
         JOptionPane.showMessageDialog(null, message, "a", 1);

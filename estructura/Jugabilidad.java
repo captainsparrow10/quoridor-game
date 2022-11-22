@@ -35,7 +35,7 @@ public class Jugabilidad {
       while (!endOption) {
         try {
           option = Integer.parseInt(JOptionPane.showInputDialog(null,
-              "Opci�n 1: Moverse.\nOpci�n 2: Colocar muro.\nOpción 3: Salir del juego.",
+              "Opcion 1: Moverse.\nOpcion 2: Colocar muro.\nOpcion 3: Salir del juego.",
               "\nTurno de: " + listaPlayers.get(playerActual).getName() + ".", JOptionPane.INFORMATION_MESSAGE));
         } catch (Exception e) {
           JOptionPane.showMessageDialog(null, "Caracter no valido", "mensaje de error.", JOptionPane.ERROR_MESSAGE);
