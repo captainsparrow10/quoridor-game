@@ -18,8 +18,3 @@ El jugador iniciara con una opcion cada turno:
  Las vayas siempre ocupan dos espacios, aqui se aplicara la regla que puede llenar toda la recta si se desea.
  ### Fin del juego
  Cuando uno de los jugadores llega al lado contrario termina el juego
-
-# Bibliografia
-[Quoridor](https://www.ultraboardgames.com/quoridor/game-rules.php)<br/>
-[ReadMe](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)<br/>
-[Notion](https://incredible-paprika-7a4.notion.site/Proyecto-final-de-desarrollo-77b7fbf152214fd192853cc9cc119921)
